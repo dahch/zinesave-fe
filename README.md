@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ZineSave App
 
-## Getting Started
+## Descripción
+ZineSave App es una aplicación web moderna construida con [Next.js](https://nextjs.org) y [Tailwind CSS](https://tailwindcss.com) que permite a los usuarios convertir artículos web en formatos optimizados para lectura y guardarlos directamente en sus servicios de almacenamiento en la nube preferidos.
 
-First, run the development server:
+## Características Principales
+*   **Conversión de Artículos**: Transforma URLs de artículos en formatos limpios y descargables.
+*   **Gestión de Descargas**: Descarga directa de los archivos procesados.
+*   **Integración Cloud**: Conexión con servicios como Google Drive, Dropbox y OneDrive para guardar los archivos convertidos.
+*   **Interfaz Moderna**: UI responsiva y amigable diseñada con Tailwind CSS.
+
+## Tecnologías Utilizadas
+*   **Framework**: Next.js 16 (App Router)
+*   **Biblioteca UI**: React 19
+*   **Estilos**: Tailwind CSS 3
+*   **Gestión de Estado**: Zustand
+*   **Data Fetching**: TanStack Query
+*   **Cliente HTTP**: Axios
+*   **Iconos**: Lucide React
+*   **Notificaciones**: Sonner
+
+## Requisitos Previos
+
+Antes de comenzar, asegúrate de tener instalado:
+*   [Node.js](https://nodejs.org/) (versión LTS recomendada)
+*   [pnpm](https://pnpm.io/) (utilizado como gestor de paquetes)
+
+## Instalación
+
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone <url-del-repositorio>
+    cd zinesave-app
+    ```
+
+2.  **Instalar dependencias**:
+    ```bash
+    pnpm install
+    ```
+
+## Configuración y Variables de Entorno (.env)
+
+El proyecto requiere ciertas variables de entorno para funcionar correctamente, especialmente para comunicarse con el backend.
+
+Crea un archivo `.env` en la raíz del proyecto. Puedes basarte en el siguiente ejemplo:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# URL de la API Backend (FastAPI)
+# Por defecto se asume que el backend corre en el puerto 8000 localmente
+NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Descripción de Variables
+*   `NEXT_PUBLIC_API_URL`: La dirección base donde se encuentra escuchando el servicio backend. Es utilizada por el cliente Axios para realizar todas las peticiones de la API.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Ejecución
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Entorno de Desarrollo
+Para iniciar el servidor de desarrollo con _Hot Reloading_:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Construcción para Producción
+Para crear una versión optimizada para producción:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm build
+```
 
-## Deploy on Vercel
+Una vez construido, puedes iniciar el servidor de producción:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Linting
+Para ejecutar el linter y verificar la calidad del código:
+
+```bash
+pnpm lint
+```
+
+## Estructura del Proyecto
+
+*   `src/app`: Páginas y layouts (Next.js App Router).
+*   `src/components`: Componentes reutilizables de la interfaz.
+*   `src/lib`: Utilidades, configuraciones (ej. cliente Axios).
+*   `src/store`: Stores globales de Zustand (ej. autenticación).
+*   `src/types`: Definiciones de tipos TypeScript.
+*   `public`: Archivos estáticos públicos (imágenes, iconos).
