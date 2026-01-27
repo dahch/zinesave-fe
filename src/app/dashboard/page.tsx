@@ -13,8 +13,10 @@ import {
   Zap
 } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function DashboardPage() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   const {
@@ -47,7 +49,7 @@ export default function DashboardPage() {
         <div className="max-w-4xl mx-auto p-6 mt-8">
           <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-center gap-2">
             <AlertCircle className="w-5 h-5" />
-            Error cargando el dashboard.
+            {t('dashboard.home.error_loading')}
           </div>
         </div>
       </div>
@@ -62,9 +64,9 @@ export default function DashboardPage() {
       <main className="max-w-6xl mx-auto p-6 mt-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-brand-navy">Dashboard</h1>
+            <h1 className="text-2xl font-bold text-brand-navy">{t('dashboard.home.title')}</h1>
             <p className="text-gray-500">
-              Resumen de tu actividad y uso del plan.
+              {t('dashboard.home.subtitle')}
             </p>
           </div>
           <Link
@@ -72,29 +74,29 @@ export default function DashboardPage() {
             className="bg-brand-orange text-white px-6 py-2.5 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center gap-2 shadow-sm"
           >
             <Zap className="w-4 h-4" />
-            Nuevo Job
+            {t('dashboard.home.new_job_button')}
           </Link>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <StatCard
-            label="Plan Actual"
+            label={t('dashboard.home.stats.plan_label')}
             value={usage.plan.toUpperCase()}
             icon={<FileText className="w-5 h-5 text-blue-500" />}
-            subtitle="Renovación mensual"
+            subtitle={t('dashboard.home.stats.plan_subtitle')}
           />
           <StatCard
-            label="Jobs Creados"
+            label={t('dashboard.home.stats.jobs_label')}
             value={usage.jobs_limit ? `${usage.jobs_created} / ${usage.jobs_limit}` : usage.jobs_created}
             icon={<BarChart3 className="w-5 h-5 text-purple-500" />}
-            subtitle="Ciclo actual"
+            subtitle={t('dashboard.home.stats.jobs_subtitle')}
           />
           <StatCard
-            label="Restantes"
-            value={usage.jobs_limit ? `${usage.jobs_remaining} / ${usage.jobs_limit}` : 'ilimitado'}
+            label={t('dashboard.home.stats.remaining_label')}
+            value={usage.jobs_limit ? `${usage.jobs_remaining} / ${usage.jobs_limit}` : t('dashboard.home.stats.unlimited')}
             icon={<CheckCircle className="w-5 h-5 text-green-500" />}
-            subtitle="Disponibles"
+            subtitle={t('dashboard.home.stats.remaining_subtitle')}
             highlight={usage.jobs_remaining === 0}
           />
         </div>
@@ -102,19 +104,19 @@ export default function DashboardPage() {
         {/* Recent Jobs Section */}
         <div>
           <h2 className="text-xl font-bold text-brand-navy mb-4">
-            Recientes
+            {t('dashboard.home.recent.title')}
           </h2>
           {recent_jobs.length === 0 ? (
             <div className="bg-white rounded-xl shadow-sm p-10 text-center border border-gray-100">
               <div className="bg-gray-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileText className="w-6 h-6 text-gray-400" />
               </div>
-              <p className="text-gray-500 mb-4">No hay trabajos recientes.</p>
+              <p className="text-gray-500 mb-4">{t('dashboard.home.recent.empty')}</p>
               <Link
                 href="/dashboard/new"
                 className="text-brand-orange font-medium hover:underline"
               >
-                Crear el primero
+                {t('dashboard.home.recent.create_first')}
               </Link>
             </div>
           ) : (
@@ -122,10 +124,10 @@ export default function DashboardPage() {
               <table className="w-full text-left border-collapse">
                 <thead className="bg-gray-50 text-gray-500 text-xs uppercase font-semibold">
                   <tr>
-                    <th className="px-4 md:px-6 py-4">Artículo</th>
-                    <th className="px-4 md:px-6 py-4">Estado</th>
-                    <th className="hidden md:table-cell px-6 py-4 text-right">Fecha</th>
-                    <th className="px-4 md:px-6 py-4 text-right">Acciones</th>
+                    <th className="px-4 md:px-6 py-4">{t('dashboard.home.table.article')}</th>
+                    <th className="px-4 md:px-6 py-4">{t('dashboard.home.table.status')}</th>
+                    <th className="hidden md:table-cell px-6 py-4 text-right">{t('dashboard.home.table.date')}</th>
+                    <th className="px-4 md:px-6 py-4 text-right">{t('dashboard.home.table.actions')}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
@@ -169,7 +171,7 @@ export default function DashboardPage() {
                   href="/dashboard/history"
                   className="text-sm text-brand-navy font-medium hover:underline"
                 >
-                  Ver todo el historial
+                  {t('dashboard.home.view_all_history')}
                 </Link>
               </div>
             </div>
@@ -211,23 +213,24 @@ function StatCard({
 }
 
 function BadgeStatus({ status }: { status: string }) {
+  const { t } = useTranslation();
   if (status === "done") {
     return (
       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-        Completado
+        {t('common.status.completed')}
       </span>
     );
   }
   if (status === "processing") {
     return (
       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 animate-pulse">
-        Procesando
+        {t('common.status.processing')}
       </span>
     );
   }
   return (
     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-      Error
+      {status === "failed" ? t('common.status.failed') : t('common.status.error')}
     </span>
   );
 }

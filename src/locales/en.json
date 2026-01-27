@@ -1,0 +1,418 @@
+{
+    "common": {
+        "login": "Log In",
+        "register": "Sign Up",
+        "logout": "Log Out",
+        "account": "Account",
+        "home": "Home",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service",
+        "status": {
+            "completed": "Completed",
+            "processing": "Processing",
+            "error": "Error",
+            "failed": "Failed"
+        }
+    },
+    "landing": {
+        "hero_title_prefix": "Turn the Web into",
+        "hero_vocab_epub": "ePub",
+        "hero_subtitle": "Save articles, guides, and tutorials to read offline on your Kindle or favorite reader. Distraction-free.",
+        "cta_start": "Start Now",
+        "features": {
+            "fast_title": "Fast",
+            "fast_desc": "Processing in seconds.",
+            "download_title": "Direct Download",
+            "download_desc": "Formats compatible with all readers.",
+            "secure_title": "Secure",
+            "secure_desc": "Your readings are private."
+        },
+        "footer_rights": "© {{year}} ZineSave All rights reserved."
+    },
+    "dashboard": {
+        "nav_new_job": "New Job",
+        "nav_history": "History",
+        "home": {
+            "title": "Dashboard",
+            "subtitle": "Summary of your activity and plan usage.",
+            "new_job_button": "New Conversion",
+            "error_loading": "Error loading dashboard.",
+            "plan_card": {
+                "title": "Current Plan",
+                "renewal": "Monthly renewal",
+                "active": "Active"
+            },
+            "usage_card": {
+                "title": "Jobs Created",
+                "subtitle": "Current cycle"
+            },
+            "remaining_card": {
+                "title": "Remaining",
+                "subtitle": "Available",
+                "unlimited": "unlimited"
+            },
+            "recent_jobs": {
+                "title": "Recent",
+                "no_jobs": "No recent jobs.",
+                "create_first": "Create the first one",
+                "view_all": "View all history",
+                "table": {
+                    "article": "Article",
+                    "status": "Status",
+                    "date": "Date",
+                    "actions": "Actions"
+                }
+            }
+        },
+        "new": {
+            "title": "New Conversion",
+            "subtitle": "Paste the URL of the article you want to convert",
+            "limit_reached": "Limit Reached",
+            "usage_limit_message": "You have used {{created}} of {{limit}} conversions."
+        },
+        "history": {
+            "title": "Conversion History",
+            "subtitle": "Your previously saved articles",
+            "error_loading": "Error loading history. Check if the server is active.",
+            "empty": {
+                "title": "No conversions yet",
+                "subtitle": "Start processing your first article.",
+                "button": "Go to Dashboard"
+            },
+            "table": {
+                "article_url": "Article / URL",
+                "status": "Status",
+                "created_at": "Creation Date",
+                "actions": "Actions",
+                "unknown_date": "Unknown"
+            }
+        },
+        "account": {
+            "title": "My Account",
+            "personal_info": {
+                "title": "Personal Information",
+                "name": "Name",
+                "email": "Email",
+                "registered": "Registration Date",
+                "country": "Country",
+                "not_specified": "Not specified"
+            },
+            "fiscal_data": {
+                "title": "Fiscal Data",
+                "is_company": "COMPANY",
+                "vat_id": "User ID"
+            },
+            "plan": {
+                "title": "Plan and Usage",
+                "current_plan": "Current Plan",
+                "status_active": "Active",
+                "jobs_created": "Jobs created this cycle",
+                "remaining_message": "You have <1>{{remaining}}</1> conversions available."
+            },
+            "integrations": {
+                "title": "Integrations",
+                "connected": "Connected",
+                "connect": "Connect",
+                "error_google": "Error connecting with Google",
+                "error_dropbox": "Error connecting with Dropbox",
+                "error_onedrive": "Error connecting with OneDrive"
+            }
+        }
+    },
+    "job_processor": {
+        "create_error": "Error creating job",
+        "upload_success": "Uploaded successfully",
+        "upload_error": "Error uploading file",
+        "url_label": "Article URL",
+        "url_placeholder": "https://example.com/interesting-article",
+        "convert_button": "Convert",
+        "limit_reached": "You have reached your free plan limit.",
+        "status": {
+            "processing": "Processing content...",
+            "done": "Conversion complete!",
+            "failed": "Conversion error",
+            "starting": "Starting..."
+        },
+        "open_article": "Open Article",
+        "download_article": "Download Article",
+        "saved_in": "Saved in",
+        "upload_to": "Upload to",
+        "try_another_url": "Try another URL",
+        "convert_another": "Convert another article",
+        "error_message": "Something went wrong processing that URL. Check if it's a public article."
+    },
+    "auth": {
+        "login": {
+            "title": "Login",
+            "unexpected_response": "Unexpected server response",
+            "invalid_credentials": "Invalid credentials or connection error",
+            "logging_in": "Logging in...",
+            "submit": "Login",
+            "no_account": "Don't have an account?",
+            "register_link": "Register"
+        },
+        "register": {
+            "title": "Create Account",
+            "unexpected_response": "Unexpected server response",
+            "email_exists": "This email is already registered",
+            "general_error": "Error registering. Try again.",
+            "is_company": "Are you a company?",
+            "country": "Country",
+            "select_country": "Select a country",
+            "vat_number": "VAT Number / TAX ID",
+            "creating_account": "Creating account...",
+            "submit": "Register",
+            "has_account": "Already have an account?",
+            "login_link": "Login"
+        },
+        "google_error": "Could not start Google service",
+        "email": "Email",
+        "password": "Password",
+        "name": "Name",
+        "or_continue_with": "Or continue with",
+        "google": "Google",
+        "back": "Back"
+    },
+    "countries": {
+        "ES": "Spain",
+        "MX": "Mexico",
+        "US": "United States",
+        "AR": "Argentina",
+        "CO": "Colombia",
+        "CL": "Chile"
+    },
+    "privacy": {
+        "title": "PRIVACY POLICY",
+        "last_updated": "Last Updated: January 2026",
+        "intro_1": "Camila Alejandra Hernandez Muñoz, having her registered office located at Carrer d'En Font, 08201, Sabadell, Spain and registered with the trade register under number Z2872243P (\"ZineSave\", \"we\", \"us\", or \"our\"), is the owner and operator of the website https://zinesave.io (the \"Service\") and acts as the Data Controller regarding the processing of your personal data.",
+        "intro_2": "The purpose of this Privacy Policy is to inform you about how we collect, use, and protect your personal data when you use our Service.",
+        "intro_3": "If you have any questions regarding this policy, you can contact us at: <1>soporte@zinesave.io</1>.",
+        "sections": {
+            "1": {
+                "title": "1. WHO IS CONCERNED?",
+                "p1": "This policy applies to anyone who browses our website, creates an account, or uses the ZineSave conversion tools (collectively, the \"Users\").",
+                "p2": "Our Service is not intended for children under the age of 13. We do not knowingly collect personal data from children under 13."
+            },
+            "2": {
+                "title": "2. WHAT DATA DO WE COLLECT?",
+                "intro": "We strictly limit the data we collect to what is necessary to provide the Service and improve your experience.",
+                "A": {
+                    "title": "A. Information you provide to us",
+                    "li1": "<0>Account Information:</0> When you register, we collect your email address and authentication credentials.",
+                    "li2": "<0>User Content:</0> We process the URLs you submit and the content of the articles extracted solely for the purpose of generating the ePub files.",
+                    "li3": "<0>Support Data:</0> Information you provide when contacting our support team."
+                },
+                "B": {
+                    "title": "B. Information collected automatically",
+                    "li1": "<0>Usage Data & Logs:</0> Technical information on how you interact with the Service (e.g., timestamps, error logs) to ensure system stability.",
+                    "li2": "<0>Analytics Data:</0> We use Google Analytics to collect data on page views and user navigation patterns.",
+                    "li3": "<0>Cookies:</0> We use essential cookies to maintain your session and analytical cookies (subject to your consent) to measure performance."
+                },
+                "C": {
+                    "title": "C. Payment Information",
+                    "li1": "<0>Transaction Data:</0> For paid subscriptions, we process the transaction status. ZineSave does not store or process your credit card or debit card details. All payment information is securely transmitted directly to our payment processor, Stripe."
+                }
+            },
+            "3": {
+                "title": "3. PURPOSES AND LEGAL BASIS",
+                "intro": "In compliance with the GDPR, we process your data based on specific legal grounds:",
+                "table": {
+                    "headers": [
+                        "Processing Purpose",
+                        "Collected Data",
+                        "Legal Basis",
+                        "Retention Period"
+                    ],
+                    "rows": [
+                        [
+                            "Service Provision",
+                            "Submitted URLs, Article Text",
+                            "Contractual Performance",
+                            "7 days"
+                        ],
+                        [
+                            "Account Management",
+                            "Email, Password, User ID",
+                            "Contractual Performance",
+                            "Account duration + 1 year"
+                        ],
+                        [
+                            "Payments",
+                            "Payment confirmation",
+                            "Contractual & Legal",
+                            "5-10 years"
+                        ],
+                        [
+                            "Analytics",
+                            "IP, Navigation Data",
+                            "Consent",
+                            "14 months"
+                        ],
+                        [
+                            "Transactional Comms",
+                            "Email Address",
+                            "Contractual Performance",
+                            "Account duration"
+                        ]
+                    ]
+                }
+            },
+            "4": {
+                "title": "4. DATA RECIPIENTS (SUB-PROCESSORS)",
+                "intro": "We do not sell your personal data. To provide the Service, we share data with trusted third-party service providers (\"Sub-processors\") who adhere to strict data protection standards:",
+                "li1": "<0>Hosting & Infrastructure:</0> Vercel Inc. (USA) - Hosting and Serverless Functions.",
+                "li2": "<0>Database:</0> Neon Inc. (USA) - PostgreSQL Database Provider.",
+                "li3": "<0>Transactional Emails:</0> MailerSend (EU/USA) - Delivery of account notifications and login links.",
+                "li4": "<0>Payments:</0> Stripe (USA) - Payment processing. You can review their privacy policy at <1>stripe.com/privacy</1>.",
+                "li5": "<0>Analytics:</0> Google Analytics (USA) - Traffic analysis."
+            },
+            "5": {
+                "title": "5. INTERNATIONAL TRANSFERS",
+                "content": "Some of our service providers (Vercel, Neon, Google, Stripe) are located outside the European Economic Area (EEA). We ensure that these transfers are protected by appropriate safeguards, such as the European Commission’s Standard Contractual Clauses (SCCs) or the EU-U.S. Data Privacy Framework."
+            },
+            "6": {
+                "title": "6. DATA RETENTION",
+                "intro": "We implement a strict data minimization policy:",
+                "li1": "<0>Generated Files (ePubs):</0> Stored strictly for 7 days to facilitate your download. After this period, files are permanently and automatically deleted from our servers. We do not retain backup copies of user-generated content after this window.",
+                "li2": "<0>Account Data:</0> Retained as long as your account is active."
+            },
+            "7": {
+                "title": "7. YOUR RIGHTS (GDPR)",
+                "intro": "Under the General Data Protection Regulation (GDPR), you have the following rights:",
+                "li1": "<0>Right of Access:</0> You can request a copy of the personal data we hold about you.",
+                "li2": "<0>Right to Rectification:</0> You can request corrections to inaccurate data.",
+                "li3": "<0>Right to Erasure (\"Right to be Forgotten\"):</0> You can ask us to delete your account and associated data.",
+                "li4": "<0>Right to Data Portability:</0> You can request your data in a structured, machine-readable format.",
+                "li5": "<0>Right to Withdraw Consent:</0> Regarding Google Analytics, you can withdraw your consent at any time via our Cookie Settings.",
+                "contact": "To exercise these rights, please contact us at <1>soporte@zinesave.io</1>. We will respond within one month."
+            },
+            "8": {
+                "title": "8. CALIFORNIA PRIVACY RIGHTS (CCPA)",
+                "intro": "For residents of California:",
+                "li1": "ZineSave does not sell your personal information.",
+                "li2": "We use third-party analytics (Google Analytics) which may be considered \"sharing\" of data for cross-context behavioral advertising under California law. You have the right to opt-out of this sharing.",
+                "li3": "You have the right to know, delete, and correct your personal information.",
+                "li4": "You have the right to non-discrimination when exercising these rights."
+            },
+            "9": {
+                "title": "9. COOKIES & ANALYTICS",
+                "intro": "We utilize two types of cookies:",
+                "li1": "<0>Essential Cookies:</0> Required for the operation of the Service (e.g., authentication).",
+                "li2": "<0>Analytical Cookies (Google Analytics):</0> Used to understand website traffic. These cookies are only activated if you provide your explicit Consent via our Cookie Banner."
+            },
+            "10": {
+                "title": "10. CHANGES TO THIS POLICY",
+                "content": "We may update this Privacy Policy from time to time. We will notify you of any significant changes by sending an email or posting a notice on our dashboard."
+            }
+        }
+    },
+    "terms": {
+        "title": "TERMS OF SERVICE",
+        "last_updated": "Last Updated: January 2026",
+        "intro_1": "These Terms of Service (these “Terms”) describe your rights and responsibilities when using the web-based software platform and services offered by Camila Alejandra Hernandez Muñoz (trading as \"ZineSave\") (\"we\", \"our\", or \"us\"). These Terms govern your access and use of our web-to-ePub conversion services available at <1>https://zinesave.io</1> (the “Services”).",
+        "intro_2": "By accessing or using the Services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you are entering into this Agreement on behalf of a company or other legal entity, you represent that you have the authority to bind such entity to these Terms.",
+        "intro_3": "PLEASE READ THESE TERMS CAREFULLY. THEY CONTAIN IMPORTANT LIMITATIONS ON LIABILITY AND PROVISIONS GOVERNING HOW DISPUTES ARE RESOLVED. AS ZINESAVE IS BASED IN SPAIN, SPECIFIC CONSUMER PROTECTION LAWS OF THE EUROPEAN UNION MAY APPLY TO YOU.",
+        "sections": {
+            "1": {
+                "title": "1. GENERAL PROVISIONS",
+                "sub_1": {
+                    "title": "1.1. Eligibility",
+                    "content": "The Services are not intended for and should not be used by anyone under the age of 14. By using the Services, you represent and warrant that you are at least 14 years of age."
+                },
+                "sub_2": {
+                    "title": "1.2. Accounts",
+                    "content": "To access certain features, you must register for an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account."
+                },
+                "sub_3": {
+                    "title": "1.3. Privacy",
+                    "content": "Your use of the Services is subject to our Privacy Policy, which describes how we collect, use, and share your personal data. By using the Services, you agree to such processing."
+                }
+            },
+            "2": {
+                "title": "2. SERVICE USAGE AND RESTRICTIONS",
+                "sub_1": {
+                    "title": "2.1. License Grant",
+                    "content": "Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, non-sublicensable license to access and use the Services for your personal or internal business purposes during the Subscription Period."
+                },
+                "sub_2": {
+                    "title": "2.2. Intellectual Property",
+                    "p1": "<0>ZineSave Ownership:</0> We own all rights, title, and interest in and to the Services, including all software, design, text, and graphics (excluding User Content).",
+                    "p2": "<0>User Content Ownership:</0> You retain full ownership of the URLs and content you submit for conversion (\"User Content\"). You grant us a worldwide, royalty-free license to use, reproduce, and process your User Content solely as necessary to provide the conversion service to you (e.g., to generate the ePub)."
+                },
+                "sub_3": {
+                    "title": "2.3. Data Retention Policy",
+                    "content": "You acknowledge that ZineSave is not a file storage service. The ePub files generated are stored on our servers for a period of 7 days to facilitate download. After this period, they are automatically and permanently deleted. You are solely responsible for downloading and backing up your converted files."
+                },
+                "sub_4": {
+                    "title": "2.4. Acceptable Use",
+                    "intro": "You agree not to use the Services to:",
+                    "li1": "Convert content that is illegal, harmful, threatening, or strictly prohibited by the copyright owner.",
+                    "li2": "Distribute spam or malware.",
+                    "li3": "Attempt to reverse engineer or compromise the security of the Services.",
+                    "li4": "Bypass any usage limits or rate limits imposed on your account type."
+                },
+                "sub_5": {
+                    "title": "2.5. Copyright & DMCA",
+                    "content": "We respect the intellectual property rights of others. We do not host the original content; we merely act as a tool to convert web content for personal consumption. If you believe that your copyrighted work is being infringed via our Service, please notify us at <1>soporte@zinesave.io</1>. We will process notices of alleged infringement in accordance with the Digital Millennium Copyright Act (DMCA) and applicable EU directives."
+                },
+                "sub_6": {
+                    "title": "2.6. Cloud Integrations (Google Drive, Dropbox, OneDrive)",
+                    "intro": "The Services allow you to export generated files directly to third-party cloud storage services (e.g., Google Drive, Dropbox, Microsoft OneDrive).",
+                    "li1": "<0>Authorization:</0> By using this feature, you authorize ZineSave to access your third-party account solely for the purpose of uploading the specific file.",
+                    "li2": "<0>No Liability:</0> We do not own or control these third-party services. We are not responsible for any loss, deletion, or corruption of data within your third-party cloud accounts. Your use of these services is governed by their respective terms and privacy policies."
+                }
+            },
+            "3": {
+                "title": "3. PAYMENT OBLIGATIONS",
+                "sub_1": {
+                    "title": "3.1. Subscriptions and Fees",
+                    "content": "For paid plans, you agree to pay the fees specified at checkout. Payments are processed by our secure third-party provider, Stripe. Subscription fees are billed in advance on a recurring basis (monthly or annually) and are non-refundable except as required by law."
+                },
+                "sub_2": {
+                    "title": "3.2. Right of Withdrawal (EU Customers)",
+                    "content": "If you are a consumer in the European Union, you typically have a right to withdraw from a contract within 14 days. However, by purchasing a subscription or a digital content service from ZineSave, you expressly consent to the immediate performance of the contract (the provision of the conversion tool) and acknowledge that you thereby lose your right of withdrawal once the service has started or the digital content has been delivered."
+                },
+                "sub_3": {
+                    "title": "3.3. Cancellation",
+                    "content": "You may cancel your subscription at any time via your account settings. Cancellation will be effective at the end of your current billing period. You will not receive a refund for the remainder of the current billing period."
+                }
+            },
+            "4": {
+                "title": "4. DISCLAIMER OF WARRANTIES",
+                "content": "THE SERVICES ARE PROVIDED \"AS IS\" AND \"AS AVAILABLE\". TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, ZINESAVE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT GUARANTEE THAT THE CONVERSION WILL BE ERROR-FREE OR THAT THE SERVICE WILL BE UNINTERRUPTED."
+            },
+            "5": {
+                "title": "5. LIMITATION OF LIABILITY",
+                "p1": "TO THE EXTENT PERMITTED BY LAW, ZINESAVE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES. OUR TOTAL LIABILITY FOR ANY CLAIM ARISING OUT OF THESE TERMS SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE SIX (6) MONTHS PRECEDING THE EVENT GIVING RISE TO THE LIABILITY.",
+                "p2": "Note: Some jurisdictions (including Spain) do not allow the exclusion of liability for gross negligence or willful misconduct; in such cases, these limitations apply to the fullest extent permitted by local law."
+            },
+            "6": {
+                "title": "6. INDEMNIFICATION",
+                "content": "You agree to indemnify and hold harmless ZineSave from any claims, damages, liabilities, and expenses (including legal fees) arising out of your use of the Services, your violation of these Terms, or your violation of any rights of a third party (including copyright infringement)."
+            },
+            "7": {
+                "title": "7. GOVERNING LAW AND JURISDICTION",
+                "sub_1": {
+                    "title": "7.1. Governing Law",
+                    "content": "These Terms shall be governed by and construed in accordance with the laws of Spain, without regard to its conflict of law principles."
+                },
+                "sub_2": {
+                    "title": "7.2. Dispute Resolution",
+                    "li1": "<0>Amicable Resolution:</0> For any dispute, you agree to first contact us at <1>soporte@zinesave.io</1> and attempt to resolve the matter informally for at least 30 days.",
+                    "li2": "<0>Jurisdiction:</0> If a dispute cannot be resolved informally, you and ZineSave agree to submit to the exclusive jurisdiction of the courts located in Sabadell (Barcelona), Spain.",
+                    "li3": "<0>Consumer Protection:</0> If you are a consumer residing in the EEA, this jurisdiction clause does not deprive you of the protection specifically granted to you by mandatory provisions of the law of your country of residence."
+                }
+            },
+            "8": {
+                "title": "8. CHANGES TO THESE TERMS",
+                "content": "We may modify these Terms at any time. If we make material changes, we will notify you via email or a prominent notice on the Service. Your continued use of the Services after such changes constitutes your acceptance of the new Terms."
+            },
+            "9": {
+                "title": "9. CONTACT US",
+                "intro": "If you have any questions about these Terms, please contact us at:",
+                "li1": "<0>Email:</0> <1>soporte@zinesave.io</1>",
+                "li2": "<0>Address:</0> Carrer d'En Font, 08201, Sabadell, Spain."
+            }
+        }
+    }
+}

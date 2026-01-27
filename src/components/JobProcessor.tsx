@@ -16,6 +16,7 @@ import {
   RefreshCw
 } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 interface JobProcessorProps {
@@ -25,6 +26,7 @@ interface JobProcessorProps {
 }
 
 export default function JobProcessor({ usage, isLoadingUsage = false, connectedProviders = [] }: JobProcessorProps) {
+  const { t } = useTranslation();
   const [urlInput, setUrlInput] = useState("");
   const [currentJobId, setCurrentJobId] = useState<string | null>(null);
   const [jobId, setJobId] = useState<string | null>(null);
@@ -41,7 +43,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
     },
     onError: (error: AxiosError) => {
       const data = error.response?.data as { detail?: string };
-      toast.error(data?.detail || "Error creando el job");
+      toast.error(data?.detail || t('job_processor.create_error'));
     },
   });
 
@@ -75,10 +77,10 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
     setUploadingProvider(provider);
     try {
       await api.post(`/jobs/${currentJobId}/upload`, { provider });
-      toast.success(`Subido correctamente`);
+      toast.success(t('job_processor.upload_success'));
       queryClient.invalidateQueries({ queryKey: ["job", currentJobId] });
     } catch (error) {
-      toast.error("Error al subir archivo");
+      toast.error(t('job_processor.upload_error'));
     } finally {
       setUploadingProvider(null);
     }
@@ -97,7 +99,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
           }`}
       >
         <label className="text-sm font-semibold text-brand-navy uppercase tracking-wider">
-          URL del Artículo
+          {t('job_processor.url_label')}
         </label>
         <div className="flex gap-3">
           <div className="relative flex-1">
@@ -106,7 +108,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
               type="url"
               value={urlInput}
               onChange={(e) => setUrlInput(e.target.value)}
-              placeholder="https://ejemplo.com/articulo-interesante"
+              placeholder={t('job_processor.url_placeholder')}
               className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition text-brand-navy"
             />
           </div>
@@ -118,14 +120,14 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
             {createJobMutation.isPending ? (
               <Loader2 className="animate-spin w-5 h-5" />
             ) : (
-              "Convertir"
+              t('job_processor.convert_button')
             )}
           </button>
         </div>
         {usage && usage.jobs_remaining === 0 && (
           <div className="mt-3 text-red-500 text-sm font-medium flex items-center gap-2">
             <AlertCircle className="w-4 h-4" />
-            Has alcanzado el límite de tu plan gratuito.
+            {t('job_processor.limit_reached')}
           </div>
         )}
       </div>
@@ -148,12 +150,12 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
 
               <span className="font-medium text-brand-navy capitalize">
                 {status === "processing"
-                  ? "Procesando contenido..."
+                  ? t('job_processor.status.processing')
                   : status === "done"
-                    ? "¡Conversión completada!"
+                    ? t('job_processor.status.done')
                     : status === "failed"
-                      ? "Error en conversión"
-                      : "Iniciando..."}
+                      ? t('job_processor.status.failed')
+                      : t('job_processor.status.starting')}
               </span>
             </div>
             <span className="text-sm font-bold text-brand-navy">
@@ -186,7 +188,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
                     className="flex items-center justify-center gap-2 w-full bg-brand-navy text-white py-4 rounded-xl font-bold hover:bg-opacity-90 hover:shadow-lg transition transform active:scale-[0.98]"
                   >
                     <LinkIcon className="w-5 h-5" />
-                    Abrir Artículo
+                    {t('job_processor.open_article')}
                   </a>
                   <a
                     href={`${process.env.NEXT_PUBLIC_API_URL}/jobs/${jobId}/download`}
@@ -195,7 +197,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
                     className="flex items-center justify-center gap-2 w-full bg-brand-orange text-white py-4 rounded-xl font-bold hover:bg-opacity-90 hover:shadow-lg transition transform active:scale-[0.98]"
                   >
                     <Download className="w-5 h-5" />
-                    Descargar Artículo
+                    {t('job_processor.download_article')}
                   </a>
 
                   {/* Cloud Upload Options - Custom UI for New Job Page */}
@@ -234,7 +236,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
                               <Cloud className="w-4 h-4" />
                             )}
                             <span>
-                              {isUploaded ? "Guardado en" : "Subir a"} {getProviderName(provider)}
+                              {isUploaded ? t('job_processor.saved_in') : t('job_processor.upload_to')} {getProviderName(provider)}
                             </span>
                           </button>
                         );
@@ -255,16 +257,15 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
                   <Plus className="w-4 h-4" />
                 )}
                 {status === "failed"
-                  ? "Intentar otra URL"
-                  : "Convertir otro artículo"}
+                  ? t('job_processor.try_another_url')
+                  : t('job_processor.convert_another')}
               </button>
             </div>
           )}
 
           {status === "failed" && (
             <div className="text-center text-red-500 text-sm mt-4">
-              Algo salió mal procesando esa URL. Verifica que sea un artículo
-              público.
+              {t('job_processor.error_message')}
             </div>
           )}
         </div>

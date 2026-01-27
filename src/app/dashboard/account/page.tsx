@@ -16,9 +16,11 @@ import {
     Shield,
     User as UserIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 export default function AccountPage() {
+    const { t } = useTranslation();
     const { data: user, isLoading: isLoadingUser } = useQuery<User>({
         queryKey: ["me"],
         queryFn: async () => {
@@ -54,31 +56,31 @@ export default function AccountPage() {
         <div className="min-h-screen bg-brand-light">
             <DashboardHeader activeTab="account" />
             <main className="max-w-4xl mx-auto p-6 mt-8">
-                <h1 className="text-2xl font-bold text-brand-navy mb-8">Mi Cuenta</h1>
+                <h1 className="text-2xl font-bold text-brand-navy mb-8">{t('dashboard.account.title')}</h1>
 
                 <div className="grid gap-6">
                     {/* Perfil */}
                     <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                             <UserIcon className="w-5 h-5 text-brand-orange" />
-                            Información Personal
+                            {t('dashboard.account.personal_info.title')}
                         </h2>
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-xs font-medium text-gray-400 uppercase mb-1">
-                                    Nombre
+                                    {t('dashboard.account.personal_info.name')}
                                 </label>
                                 <p className="text-gray-900 font-medium">{user.name}</p>
                             </div>
                             <div>
                                 <label className="block text-xs font-medium text-gray-400 uppercase mb-1 flex items-center gap-1">
-                                    <Mail className="w-3 h-3" /> Email
+                                    <Mail className="w-3 h-3" /> {t('dashboard.account.personal_info.email')}
                                 </label>
                                 <p className="text-gray-900 font-medium">{user.email}</p>
                             </div>
                             <div>
                                 <label className="block text-xs font-medium text-gray-400 uppercase mb-1 flex items-center gap-1">
-                                    <Calendar className="w-3 h-3" /> Fecha de Registro
+                                    <Calendar className="w-3 h-3" /> {t('dashboard.account.personal_info.registration_date')}
                                 </label>
                                 <p className="text-gray-900 font-medium">
                                     {new Date(user.created_at).toLocaleDateString(undefined, {
@@ -90,7 +92,7 @@ export default function AccountPage() {
                             </div>
                             <div>
                                 <label className="block text-xs font-medium text-gray-400 uppercase mb-1 flex items-center gap-1">
-                                    <MapPin className="w-3 h-3" /> País
+                                    <MapPin className="w-3 h-3" /> {t('dashboard.account.personal_info.country')}
                                 </label>
                                 <p className="text-gray-900 font-medium">
                                     {user.country ? (
@@ -103,7 +105,7 @@ export default function AccountPage() {
                                             {user.country}
                                         </span>
                                     ) : (
-                                        <span className="text-gray-400 italic">No especificado</span>
+                                        <span className="text-gray-400 italic">{t('dashboard.account.personal_info.not_specified')}</span>
                                     )}
                                 </p>
                             </div>
@@ -111,17 +113,17 @@ export default function AccountPage() {
                             {user.is_company && (
                                 <div>
                                     <label className="block text-xs font-medium text-gray-400 uppercase mb-1 flex items-center gap-1">
-                                        <Building2 className="w-3 h-3" /> Datos Fiscales
+                                        <Building2 className="w-3 h-3" /> {t('dashboard.account.personal_info.vat_data')}
                                     </label>
                                     <p className="text-gray-900 font-medium">{user.vat_number}</p>
                                     <span className="inline-block mt-1 text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-100 font-semibold tracking-wide">
-                                        EMPRESA
+                                        {t('dashboard.account.personal_info.company_badge')}
                                     </span>
                                 </div>
                             )}
                             <div>
                                 <label className="block text-xs font-medium text-gray-400 uppercase mb-1">
-                                    ID de Usuario
+                                    {t('dashboard.account.personal_info.user_id')}
                                 </label>
                                 <p className="text-gray-500 font-mono text-sm">{user.id}</p>
                             </div>
@@ -132,19 +134,19 @@ export default function AccountPage() {
                     <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <h2 className="text-lg font-semibold text-gray-800 mb-6 flex items-center gap-2">
                             <CreditCard className="w-5 h-5 text-brand-orange" />
-                            Plan y Consumo
+                            {t('dashboard.account.plan.title')}
                         </h2>
 
                         <div className="flex flex-col md:flex-row gap-8 items-center">
                             {/* Badge del Plan */}
                             <div className="flex flex-col items-center p-6 bg-brand-light/50 rounded-xl border border-blue-100 min-w-[200px]">
                                 <Shield className="w-8 h-8 text-blue-500 mb-2" />
-                                <span className="text-sm text-gray-500 font-medium">Plan Actual</span>
+                                <span className="text-sm text-gray-500 font-medium">{t('dashboard.account.plan.current_plan')}</span>
                                 <span className="text-xl font-bold text-brand-navy uppercase mt-1">
                                     {usage.plan}
                                 </span>
                                 <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full mt-2 border border-green-100">
-                                    Activo
+                                    {t('dashboard.account.plan.active_status')}
                                 </span>
                             </div>
 
@@ -152,7 +154,7 @@ export default function AccountPage() {
                             <div className="flex-1 w-full">
                                 <div className="flex justify-between items-end mb-2">
                                     <span className="text-sm font-medium text-gray-600">
-                                        Trabajos creados este ciclo
+                                        {t('dashboard.account.plan.jobs_created')}
                                     </span>
                                     <span className="text-sm font-bold text-brand-navy">
                                         {usage.jobs_created} / {usage.jobs_limit}
@@ -168,11 +170,11 @@ export default function AccountPage() {
                                     ></div>
                                 </div>
                                 <p className="text-xs text-gray-400 mt-2 text-right">
-                                    Te quedan{" "}
+                                    {t('dashboard.account.plan.remaining_prefix')}{" "}
                                     <strong className="text-brand-navy">
                                         {usage.jobs_remaining}
                                     </strong>{" "}
-                                    conversiones disponibles.
+                                    {t('dashboard.account.plan.remaining_suffix')}
                                 </p>
                             </div>
                         </div>
@@ -182,7 +184,7 @@ export default function AccountPage() {
                     <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                         <h2 className="text-lg font-semibold text-gray-800 mb-6 flex items-center gap-2">
                             <LinkIcon className="w-5 h-5 text-brand-orange" />
-                            Integraciones
+                            {t('dashboard.account.integrations.title')}
                         </h2>
 
                         <div className="grid md:grid-cols-3 gap-6">
@@ -195,7 +197,7 @@ export default function AccountPage() {
                                         const { data } = await api.get('/auth/google/authorize');
                                         if (data.auth_url) window.location.href = data.auth_url;
                                     } catch (e) {
-                                        toast.error("Error al conectar con Google");
+                                        toast.error(t('dashboard.account.integrations.error_google'));
                                     }
                                 }}
                             />
@@ -208,7 +210,7 @@ export default function AccountPage() {
                                         const { data } = await api.get('/auth/dropbox/authorize');
                                         if (data.auth_url) window.location.href = data.auth_url;
                                     } catch (e) {
-                                        toast.error("Error al conectar con Dropbox");
+                                        toast.error(t('dashboard.account.integrations.error_dropbox'));
                                     }
                                 }}
                             />
@@ -221,7 +223,7 @@ export default function AccountPage() {
                                         const { data } = await api.get('/auth/onedrive/authorize');
                                         if (data.auth_url) window.location.href = data.auth_url;
                                     } catch (e) {
-                                        toast.error("Error al conectar con OneDrive");
+                                        toast.error(t('dashboard.account.integrations.error_onedrive'));
                                     }
                                 }}
                             />
@@ -234,6 +236,7 @@ export default function AccountPage() {
 }
 
 function IntegrationCard({ name, providerKey, isConnected, onConnect }: { name: string, providerKey: string, isConnected?: boolean, onConnect: () => void }) {
+    const { t } = useTranslation();
     return (
         <div className="flex flex-col items-center p-4 border rounded-lg bg-gray-50/50 hover:bg-gray-50 transition">
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-3 text-brand-navy">
@@ -244,14 +247,14 @@ function IntegrationCard({ name, providerKey, isConnected, onConnect }: { name: 
             {isConnected ? (
                 <div className="flex items-center gap-1.5 text-green-600 bg-green-50 px-3 py-1 rounded-full text-xs font-medium mt-2">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    Conectado
+                    {t('dashboard.account.integrations.connected')}
                 </div>
             ) : (
                 <button
                     onClick={onConnect}
                     className="mt-2 text-sm text-brand-orange font-medium hover:text-brand-navy hover:underline transition"
                 >
-                    Conectar
+                    {t('dashboard.account.integrations.connect')}
                 </button>
             )}
         </div>

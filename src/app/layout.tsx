@@ -10,28 +10,43 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://zinesave.io";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "ZineSave - Convierte la Web en ePub para Kindle",
+    default: "ZineSave - Convert Web Articles to ePub for Kindle",
     template: "%s | ZineSave",
   },
   description:
-    "Guarda artículos, guías y tutoriales de la web para leerlos offline en tu Kindle o lector de libros electrónicos favorito, sin distracciones y con formato perfecto.",
+    "Save articles, guides, and tutorials from the web to read offline on your Kindle or favorite ebook reader, distraction-free and perfectly formatted.",
   keywords: [
     "epub converter",
-    "kindle",
     "web to epub",
+    "kindle converter",
+    "read later",
+    "offline reading",
+    "ebook generator",
+    "send to kindle",
+    "article saver",
+    "distraction free reading",
+    "epub downloader",
+    "convert website to epub",
+    "save web to epub",
+    "zinesave",
+    "convertir web a epub",
     "guardar articulos",
     "leer offline",
-    "read later",
-    "ebook generator",
+    "enviar a kindle",
+    "convertidor epub",
+    "descargar epub",
+    "leer mas tarde",
+    "lectura sin distracciones",
+    "articulos a ebook",
   ],
   authors: [{ name: "ZineSave Team" }],
   openGraph: {
-    title: "ZineSave - Convierte la Web en ePub",
+    title: "ZineSave - Convert Web to ePub",
     description:
-      "La mejor herramienta para guardar artículos web como libros electrónicos EPUB compatibles con Kindle y otros lectores.",
+      "The best tool to save web articles as EPUB ebooks compatible with Kindle and other readers.",
     url: baseUrl,
     siteName: "ZineSave",
-    locale: "es_ES",
+    locale: "en_US",
     type: "website",
     images: [
       {
@@ -44,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZineSave - Tu web en ePub",
+    title: "ZineSave - Your Web in ePub",
     description:
-      "Guarda cualquier artículo web para leer después en tu Kindle. Sin distracciones.",
+      "Save any web article to read later on your Kindle. Distraction-free.",
     images: ["/logo.png"],
   },
   robots: {
@@ -71,7 +86,7 @@ const jsonLd = {
   "@type": "WebSite",
   name: "ZineSave",
   url: baseUrl,
-  description: "Herramienta para convertir y guardar artículos web en formato ePub.",
+  description: "Tool to convert and save web articles in ePub format.",
   potentialAction: {
     "@type": "SearchAction",
     target: `${baseUrl}/search?q={search_term_string}`,

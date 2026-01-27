@@ -12,9 +12,11 @@ import {
   Loader2
 } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 
 export default function HistoryPage() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const {
     data: jobs,
@@ -43,10 +45,10 @@ export default function HistoryPage() {
           </Link>
           <div>
             <h1 className="text-2xl font-bold text-brand-navy">
-              Historial de Conversiones
+              {t('dashboard.history.title')}
             </h1>
             <p className="text-gray-500 text-sm">
-              Tus artículos guardados anteriormente
+              {t('dashboard.history.subtitle')}
             </p>
           </div>
         </div>
@@ -60,7 +62,7 @@ export default function HistoryPage() {
         {isError && (
           <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-center gap-2">
             <AlertCircle className="w-5 h-5" />
-            Error cargando el historial. Verifica que el servidor esté activo.
+            {t('dashboard.history.error_loading')}
           </div>
         )}
 
@@ -70,16 +72,16 @@ export default function HistoryPage() {
               <FileText className="w-8 h-8 text-gray-400" />
             </div>
             <h3 className="text-lg font-medium text-gray-900">
-              No hay conversiones aún
+              {t('dashboard.history.empty.title')}
             </h3>
             <p className="text-gray-500 mb-6">
-              Empieza procesando tu primer artículo.
+              {t('dashboard.history.empty.message')}
             </p>
             <Link
               href="/dashboard"
               className="text-brand-orange font-medium hover:underline"
             >
-              Ir al Dashboard
+              {t('dashboard.history.empty.action')}
             </Link>
           </div>
         )}
@@ -89,10 +91,10 @@ export default function HistoryPage() {
             <table className="w-full text-left border-collapse">
               <thead className="bg-gray-50 text-gray-500 text-xs uppercase font-semibold">
                 <tr>
-                  <th className="px-4 md:px-6 py-4">Artículo / URL</th>
-                  <th className="px-4 md:px-6 py-4">Estado</th>
-                  <th className="hidden md:table-cell px-6 py-4 text-right">Fecha de Creación</th>
-                  <th className="px-4 md:px-6 py-4 text-right">Acciones</th>
+                  <th className="px-4 md:px-6 py-4">{t('dashboard.history.table.article_url')}</th>
+                  <th className="px-4 md:px-6 py-4">{t('dashboard.history.table.status')}</th>
+                  <th className="hidden md:table-cell px-6 py-4 text-right">{t('dashboard.history.table.created_at')}</th>
+                  <th className="px-4 md:px-6 py-4 text-right">{t('dashboard.history.table.actions')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -123,7 +125,7 @@ export default function HistoryPage() {
                       ) : (
                         <span className="flex items-center gap-2 justify-end">
                           <Clock className="w-4 h-4 text-gray-300 animate-pulse" />
-                          Desconocida
+                          {t('dashboard.history.table.unknown_date')}
                         </span>
                       )}
                     </td>
@@ -148,23 +150,24 @@ export default function HistoryPage() {
 }
 
 function BadgeStatus({ status }: { status: string }) {
+  const { t } = useTranslation();
   if (status === "done") {
     return (
       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-        Completado
+        {t('common.status.completed')}
       </span>
     );
   }
   if (status === "processing") {
     return (
       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 animate-pulse">
-        Procesando
+        {t('common.status.processing')}
       </span>
     );
   }
   return (
     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-      Fallido
+      {status === "failed" ? t('common.status.failed') : t('common.status.error')}
     </span>
   );
 }

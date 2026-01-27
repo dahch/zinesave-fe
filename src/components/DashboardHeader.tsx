@@ -5,6 +5,8 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface DashboardHeaderProps {
     activeTab: "home" | "new" | "history" | "account";
@@ -14,6 +16,7 @@ export default function DashboardHeader({ activeTab }: DashboardHeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
     const logout = useAuthStore((s) => s.logout);
+    const { t } = useTranslation();
 
     const handleLogout = () => {
         logout();
@@ -21,9 +24,9 @@ export default function DashboardHeader({ activeTab }: DashboardHeaderProps) {
     };
 
     const navLinks = [
-        { label: "Inicio", href: "/dashboard", key: "home" },
-        { label: "Nuevo Job", href: "/dashboard/new", key: "new" },
-        { label: "Historial", href: "/dashboard/history", key: "history" },
+        { label: t('common.home'), href: "/dashboard", key: "home" },
+        { label: t('dashboard.nav_new_job'), href: "/dashboard/new", key: "new" },
+        { label: t('dashboard.nav_history'), href: "/dashboard/history", key: "history" },
     ];
 
     return (
@@ -59,6 +62,7 @@ export default function DashboardHeader({ activeTab }: DashboardHeaderProps) {
 
                 {/* Right Side Desktop (Account + Logout) */}
                 <div className="hidden md:flex items-center gap-4">
+                    <LanguageSwitcher />
                     <Link
                         href="/dashboard/account"
                         className={`text-sm font-medium transition ${activeTab === "account"
@@ -66,13 +70,13 @@ export default function DashboardHeader({ activeTab }: DashboardHeaderProps) {
                             : "text-gray-500 hover:text-brand-navy"
                             }`}
                     >
-                        Cuenta
+                        {t('common.account')}
                     </Link>
                     <button
                         onClick={handleLogout}
                         className="text-sm text-gray-500 hover:text-red-500 transition"
                     >
-                        Salir
+                        {t('common.logout')}
                     </button>
                 </div>
             </div>
@@ -81,6 +85,9 @@ export default function DashboardHeader({ activeTab }: DashboardHeaderProps) {
             {isMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-md border-t border-gray-100 animate-in slide-in-from-top-2 duration-200">
                     <nav className="flex flex-col p-4 space-y-2">
+                        <div className="px-4 py-2 flex justify-end">
+                            <LanguageSwitcher />
+                        </div>
                         {navLinks.map((link) => (
                             <Link
                                 key={link.key}
@@ -96,19 +103,19 @@ export default function DashboardHeader({ activeTab }: DashboardHeaderProps) {
                         ))}
                         <Link
                             href="/dashboard/account"
-                            className={`text-sm font-medium transition ${activeTab === "account"
-                                ? "text-brand-navy border-b-2 border-brand-orange cursor-default"
-                                : "text-gray-500 hover:text-brand-navy"
+                            className={`block px-4 py-2 rounded-lg font-medium transition ${activeTab === "account"
+                                ? "bg-brand-orange/10 text-brand-navy"
+                                : "text-gray-500 hover:bg-gray-50"
                                 }`}
                         >
-                            Cuenta
+                            {t('common.account')}
                         </Link>
                         <div className="border-t border-gray-100 my-2 pt-2">
                             <button
                                 onClick={handleLogout}
                                 className="w-full text-left px-4 py-2 text-red-500 font-medium hover:bg-red-50 rounded-lg transition"
                             >
-                                Salir
+                                {t('common.logout')}
                             </button>
                         </div>
                     </nav>

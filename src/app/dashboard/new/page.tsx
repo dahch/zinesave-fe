@@ -5,8 +5,10 @@ import api from "@/lib/api";
 import { UsageStats } from "@/types/dashboard";
 import { useQuery } from "@tanstack/react-query";
 import { AlertCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function NewJobPage() {
+    const { t } = useTranslation();
     const { data: usage, isLoading } = useQuery<UsageStats>({
         queryKey: ["me-usage"],
         queryFn: async () => {
@@ -28,9 +30,9 @@ export default function NewJobPage() {
             <DashboardHeader activeTab="new" />
             <main className="max-w-4xl mx-auto p-6 mt-8">
                 <div className="text-center mb-10">
-                    <h2 className="text-2xl font-bold text-gray-800">Nuevo Job</h2>
+                    <h2 className="text-2xl font-bold text-gray-800">{t('dashboard.new.title')}</h2>
                     <p className="text-gray-500">
-                        Pega la URL del artículo que deseas convertir
+                        {t('dashboard.new.subtitle')}
                     </p>
                 </div>
 
@@ -39,9 +41,9 @@ export default function NewJobPage() {
                     <div className="max-w-2xl mx-auto mb-6 bg-red-50 border border-red-200 rounded-lg p-4 flex gap-3 text-red-700">
                         <AlertCircle className="w-5 h-5 flex-shrink-0" />
                         <div>
-                            <p className="font-semibold">Límite alcanzado</p>
+                            <p className="font-semibold">{t('dashboard.new.limit_reached.title')}</p>
                             <p className="text-sm">
-                                Has usado {usage.jobs_created} de {usage.jobs_limit} conversiones.
+                                {t('dashboard.new.limit_reached.message', { created: usage.jobs_created, limit: usage.jobs_limit })}
                             </p>
                         </div>
                     </div>

@@ -3,12 +3,14 @@ import Logo from "@/components/Logo";
 import api from "@/lib/api";
 import { useAuthStore } from "@/store/auth";
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link"; // This import is needed for the Link components in the JSX
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { t } = useTranslation();
   const setToken = useAuthStore((s) => s.setToken);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,10 +27,10 @@ export default function LoginPage() {
         setToken(res.data.access_token);
         router.push("/dashboard");
       } else {
-        setError("Respuesta inesperada del servidor");
+        setError(t('auth.login.unexpected_response'));
       }
     } catch (err) {
-      setError("Credenciales incorrectas o error de conexión");
+      setError(t('auth.login.invalid_credentials'));
     } finally {
       setIsLoading(false);
     }
@@ -39,7 +41,7 @@ export default function LoginPage() {
       const { data } = await api.get("/auth/google");
       if (data.auth_url) window.location.href = data.auth_url;
     } catch (error) {
-      setError("No se pudo iniciar el servicio de Google");
+      setError(t('auth.google_error'));
     }
   };
 
@@ -55,10 +57,10 @@ export default function LoginPage() {
           className="flex items-center gap-2 text-sm text-gray-500 hover:text-brand-orange mb-4 transition-colors w-fit"
         >
           <ArrowLeft size={16} />
-          <span>Volver</span>
+          <span>{t('auth.back')}</span>
         </Link>
         <h2 className="text-xl font-bold text-gray-800 mb-6 text-center">
-          Iniciar Sesión
+          {t('auth.login.title')}
         </h2>
 
         {error && (
@@ -70,7 +72,7 @@ export default function LoginPage() {
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email
+              {t('auth.email')}
             </label>
             <input
               type="email"
@@ -82,7 +84,7 @@ export default function LoginPage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Contraseña
+              {t('auth.password')}
             </label>
             <input
               type="password"
@@ -98,14 +100,14 @@ export default function LoginPage() {
             disabled={isLoading}
             className="w-full bg-brand-orange text-white py-3 rounded-lg font-medium hover:bg-opacity-90 transition disabled:opacity-50"
           >
-            {isLoading ? "Entrando..." : "Ingresar"}
+            {isLoading ? t('auth.login.logging_in') : t('auth.login.submit')}
           </button>
         </form>
 
         <div className="my-6 flex items-center">
           <div className="flex-grow border-t border-gray-200"></div>
           <span className="flex-shrink-0 mx-4 text-gray-400 text-xs uppercase">
-            O continúa con
+            {t('auth.or_continue_with')}
           </span>
           <div className="flex-grow border-t border-gray-200"></div>
         </div>
@@ -132,16 +134,16 @@ export default function LoginPage() {
               d="M12 4.62c1.61 0 3.1.56 4.28 1.69l3.21-3.21C17.45 1.19 14.97 0 12 0 7.7 0 3.99 2.47 2.18 7.05l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             />
           </svg>
-          Google
+          {t('auth.google')}
         </button>
 
         <p className="mt-6 text-center text-sm text-gray-500">
-          ¿No tienes cuenta?{" "}
+          {t('auth.login.no_account')}{" "}
           <Link
             href="/register"
             className="text-brand-orange font-medium hover:underline"
           >
-            Regístrate
+            {t('auth.login.register_link')}
           </Link>
         </p>
       </div>

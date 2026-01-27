@@ -6,9 +6,11 @@ import { ArrowLeft, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function RegisterPage() {
     const router = useRouter();
+    const { t } = useTranslation();
     const setToken = useAuthStore((s) => s.setToken);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -38,13 +40,13 @@ export default function RegisterPage() {
                 setToken(res.data.access_token);
                 router.push("/dashboard");
             } else {
-                setError("Respuesta inesperada del servidor");
+                setError(t('auth.register.unexpected_response'));
             }
         } catch (err: any) {
             if (err.response?.status === 409) {
-                setError("Este email ya está registrado");
+                setError(t('auth.register.email_exists'));
             } else {
-                setError("Error al registrarse. Inténtalo de nuevo.");
+                setError(t('auth.register.general_error'));
             }
         } finally {
             setIsLoading(false);
@@ -56,7 +58,7 @@ export default function RegisterPage() {
             const { data } = await api.get("/auth/google");
             if (data.auth_url) window.location.href = data.auth_url;
         } catch (error) {
-            setError("No se pudo iniciar el servicio de Google");
+            setError(t('auth.google_error'));
         }
     };
 
@@ -72,10 +74,10 @@ export default function RegisterPage() {
                     className="flex items-center gap-2 text-sm text-gray-500 hover:text-brand-orange mb-4 transition-colors w-fit"
                 >
                     <ArrowLeft size={16} />
-                    <span>Volver</span>
+                    <span>{t('auth.back')}</span>
                 </Link>
                 <h2 className="text-xl font-bold text-gray-800 mb-6 text-center">
-                    Crear Cuenta
+                    {t('auth.register.title')}
                 </h2>
 
                 {error && (
@@ -87,7 +89,7 @@ export default function RegisterPage() {
                 <form onSubmit={handleRegister} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Nombre
+                            {t('auth.name')}
                         </label>
                         <input
                             type="text"
@@ -99,7 +101,7 @@ export default function RegisterPage() {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Email
+                            {t('auth.email')}
                         </label>
                         <input
                             type="email"
@@ -111,7 +113,7 @@ export default function RegisterPage() {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Contraseña
+                            {t('auth.password')}
                         </label>
                         <input
                             type="password"
@@ -131,13 +133,13 @@ export default function RegisterPage() {
                             onChange={(e) => setIsCompany(e.target.checked)}
                         />
                         <label htmlFor="isCompany" className="text-sm text-gray-700">
-                            ¿Eres una empresa?
+                            {t('auth.register.is_company')}
                         </label>
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            País
+                            {t('auth.register.country')}
                         </label>
                         <div className="relative">
                             <select
@@ -146,13 +148,13 @@ export default function RegisterPage() {
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
                             >
-                                <option value="">Selecciona un país</option>
-                                <option value="ES">España</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="AR">Argentina</option>
-                                <option value="CO">Colombia</option>
-                                <option value="CL">Chile</option>
+                                <option value="">{t('auth.register.select_country')}</option>
+                                <option value="ES">{t('countries.ES')}</option>
+                                <option value="MX">{t('countries.MX')}</option>
+                                <option value="US">{t('countries.US')}</option>
+                                <option value="AR">{t('countries.AR')}</option>
+                                <option value="CO">{t('countries.CO')}</option>
+                                <option value="CL">{t('countries.CL')}</option>
                                 {/* Agregar más países según necesidad */}
                             </select>
                             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
@@ -164,7 +166,7 @@ export default function RegisterPage() {
                     {isCompany && (
                         <div className="animate-in fade-in slide-in-from-top-2 duration-300">
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Número de IVA / TAX ID
+                                {t('auth.register.vat_number')}
                             </label>
                             <input
                                 type="text"
@@ -182,14 +184,14 @@ export default function RegisterPage() {
                         disabled={isLoading}
                         className="w-full bg-brand-orange text-white py-3 rounded-lg font-medium hover:bg-opacity-90 transition disabled:opacity-50"
                     >
-                        {isLoading ? "Creando cuenta..." : "Registrarse"}
+                        {isLoading ? t('auth.register.creating_account') : t('auth.register.submit')}
                     </button>
                 </form>
 
                 <div className="my-6 flex items-center">
                     <div className="flex-grow border-t border-gray-200"></div>
                     <span className="flex-shrink-0 mx-4 text-gray-400 text-xs uppercase">
-                        O continúa con
+                        {t('auth.or_continue_with')}
                     </span>
                     <div className="flex-grow border-t border-gray-200"></div>
                 </div>
@@ -216,16 +218,16 @@ export default function RegisterPage() {
                             d="M12 4.62c1.61 0 3.1.56 4.28 1.69l3.21-3.21C17.45 1.19 14.97 0 12 0 7.7 0 3.99 2.47 2.18 7.05l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                         />
                     </svg>
-                    Google
+                    {t('auth.google')}
                 </button>
 
                 <p className="mt-6 text-center text-sm text-gray-500">
-                    ¿Ya tienes cuenta?{" "}
+                    {t('auth.register.has_account')}{" "}
                     <Link
                         href="/login"
                         className="text-brand-orange font-medium hover:underline"
                     >
-                        Ingresa
+                        {t('auth.register.login_link')}
                     </Link>
                 </p>
             </div>
