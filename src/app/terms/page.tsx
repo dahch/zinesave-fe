@@ -68,7 +68,7 @@ export default function TermsPage() {
 
                         <h3 className="font-bold mt-4">{t('terms.sections.2.sub_5.title')}</h3>
                         <p>
-                            <Trans i18nKey="terms.sections.2.sub_5.content" components={{ 1: <a href="mailto:soporte@zinesave.io" className="text-brand-orange hover:underline" /> }} />
+                            <Trans i18nKey="terms.sections.2.sub_5.content" components={{ 1: <a href="mailto:support@zinesave.io" className="text-brand-orange hover:underline" /> }} />
                         </p>
 
                         <h3 className="font-bold mt-4">{t('terms.sections.2.sub_6.title')}</h3>
@@ -116,7 +116,7 @@ export default function TermsPage() {
 
                         <h3 className="font-bold mt-4">{t('terms.sections.7.sub_2.title')}</h3>
                         <ul className="list-disc pl-5 space-y-2">
-                            <li><Trans i18nKey="terms.sections.7.sub_2.li1" components={[<strong key={0} />, <a key={1} href="mailto:soporte@zinesave.io" className="text-brand-orange hover:underline" />]} /></li>
+                            <li><Trans i18nKey="terms.sections.7.sub_2.li1" components={[<strong key={0} />, <a key={1} href="mailto:support@zinesave.io" className="text-brand-orange hover:underline" />]} /></li>
                             <li><Trans i18nKey="terms.sections.7.sub_2.li2" components={[<strong key={0} />]} /></li>
                             <li><Trans i18nKey="terms.sections.7.sub_2.li3" components={[<strong key={0} />]} /></li>
                         </ul>
@@ -131,7 +131,7 @@ export default function TermsPage() {
                         <h2 className="text-xl font-bold text-brand-navy mb-3">{t('terms.sections.9.title')}</h2>
                         <p>{t('terms.sections.9.intro')}</p>
                         <ul className="list-none mt-2">
-                            <li><Trans i18nKey="terms.sections.9.li1" components={[<strong key={0} />, <a key={1} href="mailto:soporte@zinesave.io" className="text-brand-orange hover:underline" />]} /></li>
+                            <li><Trans i18nKey="terms.sections.9.li1" components={[<strong key={0} />, <a key={1} href="mailto:support@zinesave.io" className="text-brand-orange hover:underline" />]} /></li>
                             <li><Trans i18nKey="terms.sections.9.li2" components={[<strong key={0} />]} /></li>
                         </ul>
                     </section>

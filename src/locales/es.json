@@ -186,7 +186,7 @@
         "last_updated": "Última actualización: Enero 2026",
         "intro_1": "Camila Alejandra Hernandez Muñoz, con domicilio social en Carrer d'En Font, 08201, Sabadell, España y registrada en el registro mercantil con el número Z2872243P (\"ZineSave\", \"nosotros\", \"nos\" o \"nuestro\"), es la propietaria y operadora del sitio web https://zinesave.io (el \"Servicio\") y actúa como Responsable del Tratamiento con respecto al procesamiento de sus datos personales.",
         "intro_2": "El propósito de esta Política de Privacidad es informarle sobre cómo recopilamos, usamos y protegemos sus datos personales cuando utiliza nuestro Servicio.",
-        "intro_3": "Si tiene alguna pregunta sobre esta política, puede contactarnos en: <1>soporte@zinesave.io</1>.",
+        "intro_3": "Si tiene alguna pregunta sobre esta política, puede contactarnos en: <1>support@zinesave.io</1>.",
         "sections": {
             "1": {
                 "title": "1. ¿A QUIÉN CONCIERNE?",
@@ -284,7 +284,7 @@
                 "li3": "<0>Derecho de supresión (\"Derecho al olvido\"):</0> Puede solicitarnos que eliminemos su cuenta y los datos asociados.",
                 "li4": "<0>Derecho a la portabilidad de datos:</0> Puede solicitar sus datos en un formato estructurado y legible por máquina.",
                 "li5": "<0>Derecho a retirar el consentimiento:</0> Con respecto a Google Analytics, puede retirar su consentimiento en cualquier momento a través de nuestra configuración de cookies.",
-                "contact": "Para ejercer estos derechos, contáctenos en <1>soporte@zinesave.io</1>. Responderemos en el plazo de un mes."
+                "contact": "Para ejercer estos derechos, contáctenos en <1>support@zinesave.io</1>. Responderemos en el plazo de un mes."
             },
             "8": {
                 "title": "8. DERECHOS DE PRIVACIDAD DE CALIFORNIA (CCPA)",
@@ -353,7 +353,7 @@
                 },
                 "sub_5": {
                     "title": "2.5. Derechos de autor y DMCA",
-                    "content": "Respetamos los derechos de propiedad intelectual de otros. No alojamos el contenido original; simplemente actuamos como una herramienta para convertir contenido web para consumo personal. Si cree que su trabajo protegido por derechos de autor se está infringiendo a través de nuestro Servicio, notifíquenos a <1>soporte@zinesave.io</1>. Procesaremos los avisos de presunta infracción de acuerdo con la Ley de Derechos de Autor del Milenio Digital (DMCA) y las directivas aplicables de la UE."
+                    "content": "Respetamos los derechos de propiedad intelectual de otros. No alojamos el contenido original; simplemente actuamos como una herramienta para convertir contenido web para consumo personal. Si cree que su trabajo protegido por derechos de autor se está infringiendo a través de nuestro Servicio, notifíquenos a <1>support@zinesave.io</1>. Procesaremos los avisos de presunta infracción de acuerdo con la Ley de Derechos de Autor del Milenio Digital (DMCA) y las directivas aplicables de la UE."
                 },
                 "sub_6": {
                     "title": "2.6. Integraciones en la nube (Google Drive, Dropbox, OneDrive)",
@@ -398,7 +398,7 @@
                 },
                 "sub_2": {
                     "title": "7.2. Resolución de disputas",
-                    "li1": "<0>Resolución amistosa:</0> Para cualquier disputa, acepta contactarnos primero en <1>soporte@zinesave.io</1> e intentar resolver el asunto de manera informal durante al menos 30 días.",
+                    "li1": "<0>Resolución amistosa:</0> Para cualquier disputa, acepta contactarnos primero en <1>support@zinesave.io</1> e intentar resolver el asunto de manera informal durante al menos 30 días.",
                     "li2": "<0>Jurisdicción:</0> Si una disputa no se puede resolver de manera informal, usted y ZineSave aceptan someterse a la jurisdicción exclusiva de los tribunales ubicados en Sabadell (Barcelona), España.",
                     "li3": "<0>Protección al consumidor:</0> Si es un consumidor que reside en el EEE, esta cláusula de jurisdicción no le priva de la protección que le otorgan específicamente las disposiciones obligatorias de la ley de su país de residencia."
                 }
@@ -410,7 +410,7 @@
             "9": {
                 "title": "9. CONTÁCTENOS",
                 "intro": "Si tiene alguna pregunta sobre estos Términos, contáctenos en:",
-                "li1": "<0>Correo electrónico:</0> <1>soporte@zinesave.io</1>",
+                "li1": "<0>Correo electrónico:</0> <1>support@zinesave.io</1>",
                 "li2": "<0>Dirección:</0> Carrer d'En Font, 08201, Sabadell, España."
             }
         }

@@ -24,7 +24,7 @@ export default function PrivacyPage() {
                     <p>
                         <Trans
                             i18nKey="privacy.intro_3"
-                            components={{ 1: <a href="mailto:soporte@zinesave.io" className="text-brand-orange hover:underline" /> }}
+                            components={{ 1: <a href="mailto:support@zinesave.io" className="text-brand-orange hover:underline" /> }}
                         />
                     </p>
 
@@ -121,7 +121,7 @@ export default function PrivacyPage() {
                             <li><Trans i18nKey="privacy.sections.7.li5" components={[<strong key={0} />]} /></li>
                         </ul>
                         <p className="mt-4">
-                            <Trans i18nKey="privacy.sections.7.contact" components={{ 1: <a href="mailto:soporte@zinesave.io" className="text-brand-orange hover:underline" /> }} />
+                            <Trans i18nKey="privacy.sections.7.contact" components={{ 1: <a href="mailto:support@zinesave.io" className="text-brand-orange hover:underline" /> }} />
                         </p>
                     </section>
 

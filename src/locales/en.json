@@ -186,7 +186,7 @@
         "last_updated": "Last Updated: January 2026",
         "intro_1": "Camila Alejandra Hernandez Muñoz, having her registered office located at Carrer d'En Font, 08201, Sabadell, Spain and registered with the trade register under number Z2872243P (\"ZineSave\", \"we\", \"us\", or \"our\"), is the owner and operator of the website https://zinesave.io (the \"Service\") and acts as the Data Controller regarding the processing of your personal data.",
         "intro_2": "The purpose of this Privacy Policy is to inform you about how we collect, use, and protect your personal data when you use our Service.",
-        "intro_3": "If you have any questions regarding this policy, you can contact us at: <1>soporte@zinesave.io</1>.",
+        "intro_3": "If you have any questions regarding this policy, you can contact us at: <1>support@zinesave.io</1>.",
         "sections": {
             "1": {
                 "title": "1. WHO IS CONCERNED?",
@@ -284,7 +284,7 @@
                 "li3": "<0>Right to Erasure (\"Right to be Forgotten\"):</0> You can ask us to delete your account and associated data.",
                 "li4": "<0>Right to Data Portability:</0> You can request your data in a structured, machine-readable format.",
                 "li5": "<0>Right to Withdraw Consent:</0> Regarding Google Analytics, you can withdraw your consent at any time via our Cookie Settings.",
-                "contact": "To exercise these rights, please contact us at <1>soporte@zinesave.io</1>. We will respond within one month."
+                "contact": "To exercise these rights, please contact us at <1>support@zinesave.io</1>. We will respond within one month."
             },
             "8": {
                 "title": "8. CALIFORNIA PRIVACY RIGHTS (CCPA)",
@@ -353,7 +353,7 @@
                 },
                 "sub_5": {
                     "title": "2.5. Copyright & DMCA",
-                    "content": "We respect the intellectual property rights of others. We do not host the original content; we merely act as a tool to convert web content for personal consumption. If you believe that your copyrighted work is being infringed via our Service, please notify us at <1>soporte@zinesave.io</1>. We will process notices of alleged infringement in accordance with the Digital Millennium Copyright Act (DMCA) and applicable EU directives."
+                    "content": "We respect the intellectual property rights of others. We do not host the original content; we merely act as a tool to convert web content for personal consumption. If you believe that your copyrighted work is being infringed via our Service, please notify us at <1>support@zinesave.io</1>. We will process notices of alleged infringement in accordance with the Digital Millennium Copyright Act (DMCA) and applicable EU directives."
                 },
                 "sub_6": {
                     "title": "2.6. Cloud Integrations (Google Drive, Dropbox, OneDrive)",
@@ -398,7 +398,7 @@
                 },
                 "sub_2": {
                     "title": "7.2. Dispute Resolution",
-                    "li1": "<0>Amicable Resolution:</0> For any dispute, you agree to first contact us at <1>soporte@zinesave.io</1> and attempt to resolve the matter informally for at least 30 days.",
+                    "li1": "<0>Amicable Resolution:</0> For any dispute, you agree to first contact us at <1>support@zinesave.io</1> and attempt to resolve the matter informally for at least 30 days.",
                     "li2": "<0>Jurisdiction:</0> If a dispute cannot be resolved informally, you and ZineSave agree to submit to the exclusive jurisdiction of the courts located in Sabadell (Barcelona), Spain.",
                     "li3": "<0>Consumer Protection:</0> If you are a consumer residing in the EEA, this jurisdiction clause does not deprive you of the protection specifically granted to you by mandatory provisions of the law of your country of residence."
                 }
@@ -410,7 +410,7 @@
             "9": {
                 "title": "9. CONTACT US",
                 "intro": "If you have any questions about these Terms, please contact us at:",
-                "li1": "<0>Email:</0> <1>soporte@zinesave.io</1>",
+                "li1": "<0>Email:</0> <1>support@zinesave.io</1>",
                 "li2": "<0>Address:</0> Carrer d'En Font, 08201, Sabadell, Spain."
             }
         }
