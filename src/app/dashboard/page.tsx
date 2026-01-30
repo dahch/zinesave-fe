@@ -81,22 +81,22 @@ export default function DashboardPage() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <StatCard
-            label={t('dashboard.home.stats.plan_label')}
+            label={t('dashboard.home.plan_card.title')}
             value={usage.plan.toUpperCase()}
             icon={<FileText className="w-5 h-5 text-blue-500" />}
-            subtitle={t('dashboard.home.stats.plan_subtitle')}
+            subtitle={t('dashboard.home.plan_card.renewal')}
           />
           <StatCard
-            label={t('dashboard.home.stats.jobs_label')}
+            label={t('dashboard.home.usage_card.title')}
             value={usage.jobs_limit ? `${usage.jobs_created} / ${usage.jobs_limit}` : usage.jobs_created}
             icon={<BarChart3 className="w-5 h-5 text-purple-500" />}
-            subtitle={t('dashboard.home.stats.jobs_subtitle')}
+            subtitle={t('dashboard.home.usage_card.subtitle')}
           />
           <StatCard
-            label={t('dashboard.home.stats.remaining_label')}
-            value={usage.jobs_limit ? `${usage.jobs_remaining} / ${usage.jobs_limit}` : t('dashboard.home.stats.unlimited')}
+            label={t('dashboard.home.remaining_card.title')}
+            value={usage.jobs_limit ? `${usage.jobs_remaining} / ${usage.jobs_limit}` : t('dashboard.home.remaining_card.unlimited')}
             icon={<CheckCircle className="w-5 h-5 text-green-500" />}
-            subtitle={t('dashboard.home.stats.remaining_subtitle')}
+            subtitle={t('dashboard.home.remaining_card.subtitle')}
             highlight={usage.jobs_remaining === 0}
           />
         </div>
@@ -104,19 +104,19 @@ export default function DashboardPage() {
         {/* Recent Jobs Section */}
         <div>
           <h2 className="text-xl font-bold text-brand-navy mb-4">
-            {t('dashboard.home.recent.title')}
+            {t('dashboard.home.recent_jobs.title')}
           </h2>
           {recent_jobs.length === 0 ? (
             <div className="bg-white rounded-xl shadow-sm p-10 text-center border border-gray-100">
               <div className="bg-gray-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileText className="w-6 h-6 text-gray-400" />
               </div>
-              <p className="text-gray-500 mb-4">{t('dashboard.home.recent.empty')}</p>
+              <p className="text-gray-500 mb-4">{t('dashboard.home.recent_jobs.no_jobs')}</p>
               <Link
                 href="/dashboard/new"
                 className="text-brand-orange font-medium hover:underline"
               >
-                {t('dashboard.home.recent.create_first')}
+                {t('dashboard.home.recent_jobs.create_first')}
               </Link>
             </div>
           ) : (
@@ -124,10 +124,10 @@ export default function DashboardPage() {
               <table className="w-full text-left border-collapse">
                 <thead className="bg-gray-50 text-gray-500 text-xs uppercase font-semibold">
                   <tr>
-                    <th className="px-4 md:px-6 py-4">{t('dashboard.home.table.article')}</th>
-                    <th className="px-4 md:px-6 py-4">{t('dashboard.home.table.status')}</th>
-                    <th className="hidden md:table-cell px-6 py-4 text-right">{t('dashboard.home.table.date')}</th>
-                    <th className="px-4 md:px-6 py-4 text-right">{t('dashboard.home.table.actions')}</th>
+                    <th className="px-4 md:px-6 py-4">{t('dashboard.home.recent_jobs.table.article')}</th>
+                    <th className="px-4 md:px-6 py-4">{t('dashboard.home.recent_jobs.table.status')}</th>
+                    <th className="hidden md:table-cell px-6 py-4 text-right">{t('dashboard.home.recent_jobs.table.date')}</th>
+                    <th className="px-4 md:px-6 py-4 text-right">{t('dashboard.home.recent_jobs.table.actions')}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
@@ -171,7 +171,7 @@ export default function DashboardPage() {
                   href="/dashboard/history"
                   className="text-sm text-brand-navy font-medium hover:underline"
                 >
-                  {t('dashboard.home.view_all_history')}
+                  {t('dashboard.home.recent_jobs.view_all')}
                 </Link>
               </div>
             </div>

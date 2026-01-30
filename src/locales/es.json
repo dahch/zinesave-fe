@@ -95,7 +95,10 @@
                 "email": "Email",
                 "registered": "Fecha de Registro",
                 "country": "País",
-                "not_specified": "No especificado"
+                "not_specified": "No especificado",
+                "user_id": "ID de Usuario",
+                "vat_data": "Número de IVA",
+                "company_badge": "Empresa"
             },
             "fiscal_data": {
                 "title": "Datos Fiscales",
@@ -107,7 +110,8 @@
                 "current_plan": "Plan Actual",
                 "status_active": "Activo",
                 "jobs_created": "Trabajos creados este ciclo",
-                "remaining_message": "Te quedan <1>{{remaining}}</1> conversiones disponibles."
+                "remaining_message": "Te quedan <1>{{remaining}}</1> conversiones disponibles.",
+                "unlimited": "ilimitado"
             },
             "integrations": {
                 "title": "Integraciones",

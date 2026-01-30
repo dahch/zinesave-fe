@@ -1,7 +1,6 @@
 "use client";
 import GuestGuard from "@/components/auth/GuestGuard";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import Logo from "@/components/Logo";
+import Header from "@/components/landing/Header";
 import { FileDown, ShieldCheck, Zap } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -11,27 +10,7 @@ export default function LandingPage() {
   return (
     <GuestGuard>
       <div className="flex flex-col min-h-screen">
-        {/* Navbar Simple */}
-        <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto w-full">
-          <div className="flex items-center">
-            <Logo />
-          </div>
-          <div className="space-x-4 flex items-center">
-            <LanguageSwitcher />
-            <Link
-              href="/login"
-              className="px-4 py-2 text-brand-navy font-medium hover:text-brand-orange transition"
-            >
-              {t('common.login')}
-            </Link>
-            <Link
-              href="/register"
-              className="px-4 py-2 bg-brand-orange text-white rounded-lg font-medium hover:bg-opacity-90 transition"
-            >
-              {t('common.register')}
-            </Link>
-          </div>
-        </nav>
+        <Header />
 
         {/* Hero Section */}
         <main className="flex-1 flex flex-col items-center justify-center text-center px-4 mt-10">

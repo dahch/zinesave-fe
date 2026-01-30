@@ -95,7 +95,10 @@
                 "email": "Email",
                 "registered": "Registration Date",
                 "country": "Country",
-                "not_specified": "Not specified"
+                "not_specified": "Not specified",
+                "user_id": "User ID",
+                "vat_data": "VAT Number",
+                "company_badge": "Company"
             },
             "fiscal_data": {
                 "title": "Fiscal Data",
@@ -107,7 +110,8 @@
                 "current_plan": "Current Plan",
                 "status_active": "Active",
                 "jobs_created": "Jobs created this cycle",
-                "remaining_message": "You have <1>{{remaining}}</1> conversions available."
+                "remaining_message": "You have <1>{{remaining}}</1> conversions available.",
+                "unlimited": "unlimited"
             },
             "integrations": {
                 "title": "Integrations",

@@ -115,13 +115,7 @@ export default function HistoryPage() {
                     </td>
                     <td className="hidden md:table-cell px-6 py-4 text-right text-sm text-gray-500">
                       {job.created_at ? (
-                        new Date(job.created_at).toLocaleDateString(undefined, {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })
+                        new Date(job.created_at).toLocaleDateString()
                       ) : (
                         <span className="flex items-center gap-2 justify-end">
                           <Clock className="w-4 h-4 text-gray-300 animate-pulse" />

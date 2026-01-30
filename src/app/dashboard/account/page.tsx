@@ -16,7 +16,7 @@ import {
     Shield,
     User as UserIcon,
 } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 export default function AccountPage() {
@@ -80,7 +80,7 @@ export default function AccountPage() {
                             </div>
                             <div>
                                 <label className="block text-xs font-medium text-gray-400 uppercase mb-1 flex items-center gap-1">
-                                    <Calendar className="w-3 h-3" /> {t('dashboard.account.personal_info.registration_date')}
+                                    <Calendar className="w-3 h-3" /> {t('dashboard.account.personal_info.registered')}
                                 </label>
                                 <p className="text-gray-900 font-medium">
                                     {new Date(user.created_at).toLocaleDateString(undefined, {
@@ -146,7 +146,7 @@ export default function AccountPage() {
                                     {usage.plan}
                                 </span>
                                 <span className="text-xs text-green-600 bg-green-50 px-2 py-0.5 rounded-full mt-2 border border-green-100">
-                                    {t('dashboard.account.plan.active_status')}
+                                    {t('dashboard.account.plan.status_active')}
                                 </span>
                             </div>
 
@@ -157,7 +157,7 @@ export default function AccountPage() {
                                         {t('dashboard.account.plan.jobs_created')}
                                     </span>
                                     <span className="text-sm font-bold text-brand-navy">
-                                        {usage.jobs_created} / {usage.jobs_limit}
+                                        {usage.jobs_limit ? `${usage.jobs_created} / ${usage.jobs_limit}` : t('dashboard.account.plan.unlimited')}
                                     </span>
                                 </div>
                                 <div className="w-full bg-gray-100 rounded-full h-4 overflow-hidden shadow-inner">
@@ -170,11 +170,11 @@ export default function AccountPage() {
                                     ></div>
                                 </div>
                                 <p className="text-xs text-gray-400 mt-2 text-right">
-                                    {t('dashboard.account.plan.remaining_prefix')}{" "}
-                                    <strong className="text-brand-navy">
-                                        {usage.jobs_remaining}
-                                    </strong>{" "}
-                                    {t('dashboard.account.plan.remaining_suffix')}
+                                    <Trans
+                                        i18nKey="dashboard.account.plan.remaining_message"
+                                        values={{ remaining: usage.jobs_remaining }}
+                                        components={{ 1: <strong className="text-brand-navy" /> }}
+                                    />
                                 </p>
                             </div>
                         </div>
