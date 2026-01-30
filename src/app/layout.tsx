@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     "articulos a ebook",
   ],
   authors: [{ name: "ZineSave Team" }],
+  verification: {
+    google: "8Lm_8NUlx0A5HpPoTOFGe3IQqblP3kpTeaMdCDgzFCo",
+  },
   openGraph: {
     title: "ZineSave - Convert Web to ePub",
     description:
