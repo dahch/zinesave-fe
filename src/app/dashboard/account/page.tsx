@@ -20,6 +20,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 export default function AccountPage() {
+    console.log(process.env.NEXT_PUBLIC_ONEDRIVE_ENABLED);
     const { t } = useTranslation();
     const { data: user, isLoading: isLoadingUser } = useQuery<User>({
         queryKey: ["me"],
@@ -214,19 +215,21 @@ export default function AccountPage() {
                                     }
                                 }}
                             />
-                            <IntegrationCard
-                                name="OneDrive"
-                                providerKey="onedrive"
-                                isConnected={user.connected_providers?.includes('onedrive')}
-                                onConnect={async () => {
-                                    try {
-                                        const { data } = await api.get('/auth/onedrive/authorize');
-                                        if (data.auth_url) window.location.href = data.auth_url;
-                                    } catch (e) {
-                                        toast.error(t('dashboard.account.integrations.error_onedrive'));
-                                    }
-                                }}
-                            />
+                            {process.env.NEXT_PUBLIC_ONEDRIVE_ENABLED === 'true' && (
+                                <IntegrationCard
+                                    name="OneDrive"
+                                    providerKey="onedrive"
+                                    isConnected={user.connected_providers?.includes('onedrive')}
+                                    onConnect={async () => {
+                                        try {
+                                            const { data } = await api.get('/auth/onedrive/authorize');
+                                            if (data.auth_url) window.location.href = data.auth_url;
+                                        } catch (e) {
+                                            toast.error(t('dashboard.account.integrations.error_onedrive'));
+                                        }
+                                    }}
+                                />
+                            )}
                         </div>
                     </section>
                 </div>
