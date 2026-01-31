@@ -29,8 +29,12 @@ export default function LoginPage() {
       } else {
         setError(t('auth.login.unexpected_response'));
       }
-    } catch (err) {
-      setError(t('auth.login.invalid_credentials'));
+    } catch (err: any) {
+      if (err.response?.status === 403) {
+        setError(t('auth.login.email_not_verified'));
+      } else {
+        setError(t('auth.login.invalid_credentials'));
+      }
     } finally {
       setIsLoading(false);
     }

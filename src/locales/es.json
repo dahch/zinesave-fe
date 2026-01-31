@@ -150,6 +150,7 @@
             "title": "Iniciar Sesión",
             "unexpected_response": "Respuesta inesperada del servidor",
             "invalid_credentials": "Credenciales incorrectas o error de conexión",
+            "email_not_verified": "Email no verificado. Revisa tu bandeja de entrada.",
             "logging_in": "Entrando...",
             "submit": "Ingresar",
             "no_account": "¿No tienes cuenta?",
@@ -159,6 +160,8 @@
             "title": "Crear Cuenta",
             "unexpected_response": "Respuesta inesperada del servidor",
             "email_exists": "Este email ya está registrado",
+            "check_email_title": "Revisa tu Bandeja",
+            "check_email_desc": "Te hemos enviado un enlace de confirmación. Por favor revisa tu email para activar tu cuenta.",
             "general_error": "Error al registrarse. Inténtalo de nuevo.",
             "is_company": "¿Eres una empresa?",
             "country": "País",
@@ -175,7 +178,14 @@
         "name": "Nombre",
         "or_continue_with": "O continúa con",
         "google": "Google",
-        "back": "Volver"
+        "back": "Volver",
+        "verify": {
+            "title": "Verificando Email",
+            "verifying": "Por favor espera mientras verificamos tu email...",
+            "success": "¡Email verificado correctamente! Redirigiendo...",
+            "error": "La verificación falló. El enlace puede ser inválido o haber expirado.",
+            "login_button": "Ir a Login"
+        }
     },
     "countries": {
         "ES": "España",

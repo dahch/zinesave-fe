@@ -150,6 +150,7 @@
             "title": "Login",
             "unexpected_response": "Unexpected server response",
             "invalid_credentials": "Invalid credentials or connection error",
+            "email_not_verified": "Email not verified. Check your inbox.",
             "logging_in": "Logging in...",
             "submit": "Login",
             "no_account": "Don't have an account?",
@@ -159,6 +160,8 @@
             "title": "Create Account",
             "unexpected_response": "Unexpected server response",
             "email_exists": "This email is already registered",
+            "check_email_title": "Check your Inbox",
+            "check_email_desc": "We've sent you a confirmation link. Please check your email to activate your account.",
             "general_error": "Error registering. Try again.",
             "is_company": "Are you a company?",
             "country": "Country",
@@ -175,7 +178,14 @@
         "name": "Name",
         "or_continue_with": "Or continue with",
         "google": "Google",
-        "back": "Back"
+        "back": "Back",
+        "verify": {
+            "title": "Verifying Email",
+            "verifying": "Please wait while we verify your email...",
+            "success": "Email verified successfully! Redirecting...",
+            "error": "Verification failed. The link may be invalid or expired.",
+            "login_button": "Go to Login"
+        }
     },
     "countries": {
         "ES": "Spain",
