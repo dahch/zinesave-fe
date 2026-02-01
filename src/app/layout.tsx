@@ -9,6 +9,9 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://zinesave.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: "./",
+  },
   title: {
     default: "ZineSave - Convert Web Articles to ePub for Kindle",
     template: "%s | ZineSave",
