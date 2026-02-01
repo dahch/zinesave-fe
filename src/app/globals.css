@@ -5,14 +5,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light;
+  /* Force light mode for standard browser form elements */
 }
 
-@media (prefers-color-scheme: dark) {
+/*The following code is for dark mode, but it is not working. I will fix it later.*/
+/*@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+}*/
 
 html,
 body {
@@ -37,10 +40,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

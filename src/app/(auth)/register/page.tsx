@@ -1,8 +1,11 @@
 "use client";
+import CountrySelector from "@/components/CountrySelector";
 import Logo from "@/components/Logo";
+import PasswordRequirements from "@/components/PasswordRequirements";
 import api from "@/lib/api";
+import { validatePassword } from "@/lib/validation";
 import { useAuthStore } from "@/store/auth";
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -15,18 +18,34 @@ export default function RegisterPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [isCompany, setIsCompany] = useState(false);
     const [country, setCountry] = useState("");
     const [vatNumber, setVatNumber] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [isSuccess, setIsSuccess] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setError("");
         try {
+            if (password !== confirmPassword) {
+                setError(t('auth.password_mismatch'));
+                setIsLoading(false);
+                return;
+            }
+
+            const passwordErrorKey = validatePassword(password);
+            if (passwordErrorKey) {
+                setError(t(passwordErrorKey));
+                setIsLoading(false);
+                return;
+            }
+
             const payload = {
                 name,
                 email,
@@ -137,13 +156,44 @@ export default function RegisterPage() {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
                                     {t('auth.password')}
                                 </label>
-                                <input
-                                    type="password"
-                                    required
-                                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
+                                <div className="relative">
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        required
+                                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition pr-10"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                    <button
+                                        type="button"
+                                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                    </button>
+                                </div>
+                                <PasswordRequirements password={password} />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    {t('auth.confirm_password')}
+                                </label>
+                                <div className="relative">
+                                    <input
+                                        type={showConfirmPassword ? "text" : "password"}
+                                        required
+                                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition pr-10"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                    />
+                                    <button
+                                        type="button"
+                                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    >
+                                        {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                    </button>
+                                </div>
                             </div>
 
                             <div className="flex items-center gap-2">
@@ -160,29 +210,12 @@ export default function RegisterPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    {t('auth.register.country')}
-                                </label>
-                                <div className="relative">
-                                    <select
-                                        required
-                                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition bg-white appearance-none cursor-pointer"
-                                        value={country}
-                                        onChange={(e) => setCountry(e.target.value)}
-                                    >
-                                        <option value="">{t('auth.register.select_country')}</option>
-                                        <option value="ES">{t('countries.ES')}</option>
-                                        <option value="MX">{t('countries.MX')}</option>
-                                        <option value="US">{t('countries.US')}</option>
-                                        <option value="AR">{t('countries.AR')}</option>
-                                        <option value="CO">{t('countries.CO')}</option>
-                                        <option value="CL">{t('countries.CL')}</option>
-                                        {/* Agregar más países según necesidad */}
-                                    </select>
-                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
-                                        <ChevronDown size={20} />
-                                    </div>
-                                </div>
+                                <CountrySelector
+                                    value={country}
+                                    onChange={setCountry}
+                                    label={t('auth.register.country')}
+                                    placeholder={t('auth.register.select_country')}
+                                />
                             </div>
 
                             {isCompany && (

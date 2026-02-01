@@ -203,8 +203,17 @@
             "updating": "Actualizando...",
             "success_message": "Contraseña actualizada exitosamente",
             "back_to_login": "Ir al Login",
-            "error_token": "Token inválido o expirado"
-        }
+            "error_token": "Token inválido o expirado",
+            "confirm_password_label": "Confirmar Contraseña"
+        },
+        "confirm_password": "Confirmar Contraseña",
+        "password_contain_uppercase": "La contraseña debe contener al menos una letra mayúscula",
+        "password_contain_lowercase": "La contraseña debe contener al menos una letra minúscula",
+        "password_contain_number": "La contraseña debe contener al menos un número",
+        "password_contain_symbol": "La contraseña debe contener al menos un símbolo (!@#$%^&*)",
+        "password_min_length": "La contraseña debe tener al menos 8 caracteres",
+        "password_mismatch": "Las contraseñas no coinciden",
+        "invalid_password": "La contraseña no cumple con los requisitos"
     },
     "countries": {
         "ES": "España",

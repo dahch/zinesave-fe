@@ -1,7 +1,7 @@
 "use client";
+import CountrySelector from "@/components/CountrySelector";
 import Logo from "@/components/Logo";
 import api from "@/lib/api";
-import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -62,29 +62,12 @@ export default function OnboardingPage() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                            País <span className="text-red-500">*</span>
-                        </label>
-                        <div className="relative">
-                            <select
-                                required
-                                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition bg-white appearance-none cursor-pointer"
-                                value={country}
-                                onChange={(e) => setCountry(e.target.value)}
-                            >
-                                <option value="">Selecciona tu país</option>
-                                <option value="ES">España</option>
-                                <option value="MX">México</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="AR">Argentina</option>
-                                <option value="CO">Colombia</option>
-                                <option value="CL">Chile</option>
-                                <option value="Other">Otro</option>
-                            </select>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
-                                <ChevronDown size={20} />
-                            </div>
-                        </div>
+                        <CountrySelector
+                            value={country}
+                            onChange={setCountry}
+                            label="País"
+                            placeholder="Selecciona tu país"
+                        />
                     </div>
 
                     {isCompany && (

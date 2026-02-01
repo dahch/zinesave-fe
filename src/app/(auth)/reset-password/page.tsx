@@ -1,7 +1,10 @@
 "use client";
 
 import Logo from "@/components/Logo";
+import PasswordRequirements from "@/components/PasswordRequirements";
 import api from "@/lib/api";
+import { validatePassword } from "@/lib/validation";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
@@ -14,8 +17,11 @@ function ResetPasswordContent() {
     const token = searchParams.get("token");
 
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [status, setStatus] = useState<'idle' | 'updating' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -27,6 +33,19 @@ function ResetPasswordContent() {
 
         setStatus('updating');
         setErrorMessage("");
+
+        if (password !== confirmPassword) {
+            setErrorMessage(t('auth.password_mismatch'));
+            setStatus('error');
+            return;
+        }
+
+        const passwordErrorKey = validatePassword(password);
+        if (passwordErrorKey) {
+            setErrorMessage(t(passwordErrorKey));
+            setStatus('error');
+            return;
+        }
 
         try {
             await api.post("/auth/reset-password", {
@@ -83,14 +102,46 @@ function ResetPasswordContent() {
                             <label className="block text-sm font-medium text-gray-700 mb-1">
                                 {t('auth.reset_password.new_password_label')}
                             </label>
-                            <input
-                                type="password"
-                                required
-                                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="********"
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    required
+                                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition pr-10"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="********"
+                                />
+                                <button
+                                    type="button"
+                                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
+                            <PasswordRequirements password={password} />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                {t('auth.reset_password.confirm_password_label')}
+                            </label>
+                            <div className="relative">
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    required
+                                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition pr-10"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    placeholder="********"
+                                />
+                                <button
+                                    type="button"
+                                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                >
+                                    {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
                         </div>
 
                         <button

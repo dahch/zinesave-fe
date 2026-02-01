@@ -203,8 +203,17 @@
             "updating": "Updating...",
             "success_message": "Password updated successfully",
             "back_to_login": "Go to Login",
-            "error_token": "Invalid or expired token"
-        }
+            "error_token": "Invalid or expired token",
+            "confirm_password_label": "Confirm Password"
+        },
+        "confirm_password": "Confirm Password",
+        "password_contain_uppercase": "Password must contain at least one uppercase letter",
+        "password_contain_lowercase": "Password must contain at least one lowercase letter",
+        "password_contain_number": "Password must contain at least one number",
+        "password_contain_symbol": "Password must contain at least one symbol (!@#$%^&*)",
+        "password_min_length": "Password must be at least 8 characters long",
+        "password_mismatch": "Passwords do not match",
+        "invalid_password": "Password does not meet requirements"
     },
     "countries": {
         "ES": "Spain",
