@@ -47,7 +47,7 @@
                 "subtitle": "Ciclo actual"
             },
             "remaining_card": {
-                "title": "Restantes",
+                "title": "Créditos",
                 "subtitle": "Disponibles",
                 "unlimited": "ilimitado"
             },
@@ -67,8 +67,8 @@
         "new": {
             "title": "Nueva conversión",
             "subtitle": "Pega la URL del artículo que deseas convertir",
-            "limit_reached": "Límite alcanzado",
-            "usage_limit_message": "Has usado {{created}} de {{limit}} conversiones."
+            "limit_reached": "No tienes créditos suficientes",
+            "usage_limit_message": "Te has quedado sin créditos para realizar nuevas conversiones."
         },
         "history": {
             "title": "Historial de Conversiones",
@@ -109,8 +109,8 @@
                 "title": "Plan y Consumo",
                 "current_plan": "Plan Actual",
                 "status_active": "Activo",
-                "jobs_created": "Trabajos creados este ciclo",
-                "remaining_message": "Te quedan <1>{{remaining}}</1> conversiones disponibles.",
+                "credits_available": "Créditos Disponibles",
+                "remaining_message": "Te quedan <1>{{remaining}}</1> créditos disponibles.",
                 "unlimited": "ilimitado"
             },
             "integrations": {
@@ -132,7 +132,12 @@
         "url_label": "URL del Artículo",
         "url_placeholder": "https://ejemplo.com/articulo-interesante",
         "convert_button": "Convertir",
-        "limit_reached": "Has alcanzado el límite de tu plan gratuito.",
+        "limit_reached": "No tienes créditos suficientes para realizar esta conversión.",
+        "paywall_title": "Mejora tu plan",
+        "paywall_desc": "Te has quedado sin créditos. Actualiza a Pro para seguir convirtiendo artículos.",
+        "paywall_button": "Actualizar a Pro",
+        "paywall_success": "¡Gracias por tu interés! Como agradecimiento por ser Beta Tester, te hemos regalado 5 créditos extra para que sigas usando la app.",
+        "paywall_soon": "Gracias por tu interés, pronto habilitaremos los pagos.",
         "status": {
             "processing": "Procesando contenido...",
             "done": "¡Conversión completada!",

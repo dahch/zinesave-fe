@@ -32,13 +32,13 @@ export default function NewJobPage() {
                 </div>
 
                 {/* Notificación de Límite (Visual, aunque JobProcessor también lo maneja) */}
-                {usage && usage.jobs_remaining === 0 && (
+                {usage && usage.credits === 0 && (
                     <div className="max-w-2xl mx-auto mb-6 bg-red-50 border border-red-200 rounded-lg p-4 flex gap-3 text-red-700">
                         <AlertCircle className="w-5 h-5 flex-shrink-0" />
                         <div>
-                            <p className="font-semibold">{t('dashboard.new.limit_reached.title')}</p>
+                            <p className="font-semibold">{t('dashboard.new.limit_reached')}</p>
                             <p className="text-sm">
-                                {t('dashboard.new.limit_reached.message', { created: usage.jobs_created, limit: usage.jobs_limit })}
+                                {t('dashboard.new.usage_limit_message')}
                             </p>
                         </div>
                     </div>

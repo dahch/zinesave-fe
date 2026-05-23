@@ -151,29 +151,20 @@ export default function AccountPage() {
                                 </span>
                             </div>
 
-                            {/* Barra de Progreso */}
-                            <div className="flex-1 w-full">
+                            {/* Credits Info */}
+                            <div className="flex-1 w-full bg-gray-50 rounded-xl p-6 border border-gray-100 flex flex-col justify-center">
                                 <div className="flex justify-between items-end mb-2">
                                     <span className="text-sm font-medium text-gray-600">
-                                        {t('dashboard.account.plan.jobs_created')}
+                                        {t('dashboard.account.plan.credits_available')}
                                     </span>
-                                    <span className="text-sm font-bold text-brand-navy">
-                                        {usage.jobs_limit ? `${usage.jobs_created} / ${usage.jobs_limit}` : t('dashboard.account.plan.unlimited')}
+                                    <span className={`text-2xl font-bold ${usage.credits === 0 ? "text-red-500" : "text-brand-navy"}`}>
+                                        {usage.credits}
                                     </span>
                                 </div>
-                                <div className="w-full bg-gray-100 rounded-full h-4 overflow-hidden shadow-inner">
-                                    <div
-                                        className={`h-full transition-all duration-500 ${usage.jobs_remaining === 0 ? "bg-red-500" : "bg-blue-500"
-                                            }`}
-                                        style={{
-                                            width: `${(usage.jobs_created / usage.jobs_limit) * 100}%`,
-                                        }}
-                                    ></div>
-                                </div>
-                                <p className="text-xs text-gray-400 mt-2 text-right">
+                                <p className="text-sm text-gray-500 mt-2">
                                     <Trans
                                         i18nKey="dashboard.account.plan.remaining_message"
-                                        values={{ remaining: usage.jobs_remaining }}
+                                        values={{ remaining: usage.credits }}
                                         components={{ 1: <strong className="text-brand-navy" /> }}
                                     />
                                 </p>

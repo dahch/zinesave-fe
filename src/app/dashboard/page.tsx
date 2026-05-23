@@ -100,7 +100,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 max-w-4xl">
           <StatCard
             label={t('dashboard.home.plan_card.title')}
             value={usage.plan.toUpperCase()}
@@ -108,17 +108,11 @@ export default function DashboardPage() {
             subtitle={t('dashboard.home.plan_card.renewal')}
           />
           <StatCard
-            label={t('dashboard.home.usage_card.title')}
-            value={usage.jobs_limit ? `${usage.jobs_created} / ${usage.jobs_limit}` : usage.jobs_created}
-            icon={<BarChart3 className="w-5 h-5 text-purple-500" />}
-            subtitle={t('dashboard.home.usage_card.subtitle')}
-          />
-          <StatCard
             label={t('dashboard.home.remaining_card.title')}
-            value={usage.jobs_limit ? `${usage.jobs_remaining} / ${usage.jobs_limit}` : t('dashboard.home.remaining_card.unlimited')}
+            value={usage.credits}
             icon={<CheckCircle className="w-5 h-5 text-green-500" />}
             subtitle={t('dashboard.home.remaining_card.subtitle')}
-            highlight={usage.jobs_remaining === 0}
+            highlight={usage.credits === 0}
           />
         </div>
 

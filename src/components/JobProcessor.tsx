@@ -19,6 +19,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { useAuthStore } from "@/store/auth";
+import PaywallModal from "./PaywallModal";
 
 interface JobProcessorProps {
   usage?: UsageStats;
@@ -31,6 +32,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
   const [urlInput, setUrlInput] = useState("");
   const [currentJobId, setCurrentJobId] = useState<string | null>(null);
   const [jobId, setJobId] = useState<string | null>(null);
+  const [isPaywallOpen, setIsPaywallOpen] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -45,7 +47,9 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
     onError: (error: AxiosError) => {
       const status = error.response?.status;
       const data = error.response?.data as { detail?: string };
-      if (status === 409) {
+      if (status === 403 && data?.detail === 'INSUFFICIENT_CREDITS') {
+        setIsPaywallOpen(true);
+      } else if (status === 409) {
         toast.error(t('job_processor.error_conflict'));
       } else if (status === 429) {
         toast.error(t('job_processor.error_rate_limit'));
@@ -145,7 +149,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
           </div>
           <button
             onClick={() => createJobMutation.mutate(urlInput)}
-            disabled={!urlInput || (usage?.jobs_remaining === 0 && !createJobMutation.isPending)}
+            disabled={!urlInput || (usage?.credits === 0 && !createJobMutation.isPending)}
             className="bg-brand-orange text-white px-8 py-4 rounded-xl font-bold hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition shadow-lg shadow-blue-900/10 flex items-center gap-2"
           >
             {createJobMutation.isPending ? (
@@ -155,7 +159,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
             )}
           </button>
         </div>
-        {usage && usage.jobs_remaining === 0 && (
+        {usage && usage.credits === 0 && (
           <div className="mt-3 text-red-500 text-sm font-medium flex items-center gap-2">
             <AlertCircle className="w-4 h-4" />
             {t('job_processor.limit_reached')}
@@ -299,6 +303,8 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
           )}
         </div>
       )}
+
+      <PaywallModal isOpen={isPaywallOpen} onClose={() => setIsPaywallOpen(false)} />
     </div>
   );
 }

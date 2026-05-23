@@ -1,8 +1,7 @@
 export interface UsageStats {
     plan: string;
-    jobs_created: number;
-    jobs_limit: number;
-    jobs_remaining: number;
+    credits: number;
+    is_beta_tester: boolean;
 }
 
 export interface Job {
@@ -42,5 +41,7 @@ export interface User {
     country?: string | null;
     vat_number?: string | null;
     connected_providers?: Array<string>;
+    credits: number;
+    is_beta_tester: boolean;
 }
 

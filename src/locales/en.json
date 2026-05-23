@@ -47,7 +47,7 @@
                 "subtitle": "Current cycle"
             },
             "remaining_card": {
-                "title": "Remaining",
+                "title": "Credits",
                 "subtitle": "Available",
                 "unlimited": "unlimited"
             },
@@ -67,8 +67,8 @@
         "new": {
             "title": "New Conversion",
             "subtitle": "Paste the URL of the article you want to convert",
-            "limit_reached": "Limit Reached",
-            "usage_limit_message": "You have used {{created}} of {{limit}} conversions."
+            "limit_reached": "Insufficient credits",
+            "usage_limit_message": "You have run out of credits to make new conversions."
         },
         "history": {
             "title": "Conversion History",
@@ -109,8 +109,8 @@
                 "title": "Plan and Usage",
                 "current_plan": "Current Plan",
                 "status_active": "Active",
-                "jobs_created": "Jobs created this cycle",
-                "remaining_message": "You have <1>{{remaining}}</1> conversions available.",
+                "credits_available": "Credits Available",
+                "remaining_message": "You have <1>{{remaining}}</1> credits available.",
                 "unlimited": "unlimited"
             },
             "integrations": {
@@ -132,7 +132,12 @@
         "url_label": "Article URL",
         "url_placeholder": "https://example.com/interesting-article",
         "convert_button": "Convert",
-        "limit_reached": "You have reached your free plan limit.",
+        "limit_reached": "You don't have enough credits for this conversion.",
+        "paywall_title": "Upgrade your plan",
+        "paywall_desc": "You have run out of credits. Upgrade to Pro to continue converting articles.",
+        "paywall_button": "Upgrade to Pro",
+        "paywall_success": "Thanks for your interest! As a thank you for being a Beta Tester, we have given you 5 extra credits to keep using the app.",
+        "paywall_soon": "Thanks for your interest, we will enable payments soon.",
         "status": {
             "processing": "Processing content...",
             "done": "Conversion complete!",
