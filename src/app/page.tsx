@@ -91,21 +91,21 @@ export default function LandingPage() {
           {/* Features Section */}
           <section className="py-24 bg-gray-50 px-4 border-y border-gray-100">
             <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-8 text-left">
+              <div className="grid md:grid-cols-3 gap-8">
                 <FeatureCard
-                  icon={<Zap className="w-6 h-6 text-yellow-500" />}
+                  icon={<Zap className="w-8 h-8 text-yellow-600" />}
                   title={t('landing.features.fast_title')}
                   desc={t('landing.features.fast_desc')}
                   bgColor="bg-yellow-50"
                 />
                 <FeatureCard
-                  icon={<Download className="w-6 h-6 text-blue-500" />}
+                  icon={<Download className="w-8 h-8 text-blue-600" />}
                   title={t('landing.features.download_title')}
                   desc={t('landing.features.download_desc')}
                   bgColor="bg-blue-50"
                 />
                 <FeatureCard
-                  icon={<ShieldCheck className="w-6 h-6 text-green-500" />}
+                  icon={<ShieldCheck className="w-8 h-8 text-green-600" />}
                   title={t('landing.features.secure_title')}
                   desc={t('landing.features.secure_desc')}
                   bgColor="bg-green-50"
@@ -159,8 +159,8 @@ function FeatureCard({
   bgColor: string;
 }) {
   return (
-    <article className="group p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-      <div className={`mb-6 ${bgColor} w-14 h-14 flex items-center justify-center rounded-xl group-hover:scale-110 transition-transform duration-300`}>
+    <article className="group flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+      <div className={`mb-6 ${bgColor} w-16 h-16 flex items-center justify-center rounded-2xl shadow-inner group-hover:scale-110 transition-transform duration-300`}>
         {icon}
       </div>
       <h3 className="text-xl font-bold text-brand-navy mb-3">{title}</h3>
