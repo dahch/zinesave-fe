@@ -106,7 +106,8 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
             }
         });
         if (res.ok) {
-            window.open(res.url, '_blank');
+            const data = await res.json();
+            window.open(data.download_url, '_blank');
         } else {
             toast.error(t('job_processor.upload_error')); // Reusing error message or generic one
         }

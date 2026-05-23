@@ -59,7 +59,8 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
                 }
             });
             if (res.ok) {
-                window.open(res.url, '_blank');
+                const data = await res.json();
+                window.open(data.download_url, '_blank');
             } else {
                 toast.error("Error al descargar el archivo");
             }
