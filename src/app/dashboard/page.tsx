@@ -35,9 +35,30 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen bg-brand-light">
         <DashboardHeader activeTab="home" />
-        <div className="flex justify-center items-center h-[calc(100vh-80px)]">
-          <Loader2 className="w-10 h-10 text-brand-orange animate-spin" />
-        </div>
+        <main className="max-w-6xl mx-auto p-6 mt-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 animate-pulse">
+            <div className="w-full md:w-auto">
+              <div className="h-8 bg-gray-200 rounded-md w-48 mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded-md w-64"></div>
+            </div>
+            <div className="h-10 bg-gray-200 rounded-lg w-40"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 animate-pulse">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 h-32 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  <div className="w-10 h-10 bg-gray-100 rounded-lg"></div>
+                </div>
+                <div className="h-6 bg-gray-100 rounded-md w-24"></div>
+                <div className="h-4 bg-gray-100 rounded-md w-32 mt-2"></div>
+              </div>
+            ))}
+          </div>
+          <div className="animate-pulse">
+            <div className="h-6 bg-gray-200 rounded-md w-40 mb-4"></div>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 h-64"></div>
+          </div>
+        </main>
       </div>
     );
   }

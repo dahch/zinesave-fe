@@ -17,14 +17,13 @@ export default function CountrySelector({ value, onChange, label, placeholder }:
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Determine which property to use based on language (default to English if not 'es')
-    const lang = i18n.language.startsWith('es') ? 'name_es' : 'name_en';
+    const lang: "name_es" | "name_en" = i18n.language.startsWith('es') ? 'name_es' : 'name_en';
 
     const selectedCountry = COUNTRIES.find((c) => c.code === value);
 
     // Filter countries based on search term in the current language
     const filteredCountries = COUNTRIES.filter((country) => {
-        // @ts-ignore - indexing by dynamic key
-        const name = country[lang] as string;
+        const name = country[lang];
         return name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
@@ -47,8 +46,7 @@ export default function CountrySelector({ value, onChange, label, placeholder }:
 
     const getCountryName = (country: typeof COUNTRIES[0] | undefined) => {
         if (!country) return "";
-        // @ts-ignore
-        return country[lang] as string;
+        return country[lang];
     };
 
     return (

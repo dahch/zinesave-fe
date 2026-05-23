@@ -1,7 +1,8 @@
 "use client";
 import DashboardHeader from "@/components/DashboardHeader";
+import { useMe } from "@/hooks/useMe";
 import api from "@/lib/api";
-import { UsageStats, User } from "@/types/dashboard";
+import { UsageStats } from "@/types/dashboard";
 import { useQuery } from "@tanstack/react-query";
 import {
     Building2,
@@ -22,13 +23,7 @@ import { toast } from "sonner";
 export default function AccountPage() {
     console.log(process.env.NEXT_PUBLIC_ONEDRIVE_ENABLED);
     const { t } = useTranslation();
-    const { data: user, isLoading: isLoadingUser } = useQuery<User>({
-        queryKey: ["me"],
-        queryFn: async () => {
-            const res = await api.get("/me");
-            return res.data;
-        },
-    });
+    const { data: user, isLoading: isLoadingUser } = useMe();
 
     const { data: usage, isLoading: isLoadingUsage } = useQuery<UsageStats>({
         queryKey: ["me-usage"],
@@ -44,9 +39,14 @@ export default function AccountPage() {
         return (
             <div className="min-h-screen bg-brand-light">
                 <DashboardHeader activeTab="account" />
-                <div className="flex justify-center items-center h-[calc(100vh-80px)]">
-                    <Loader2 className="w-10 h-10 text-brand-orange animate-spin" />
-                </div>
+                <main className="max-w-4xl mx-auto p-6 mt-8 animate-pulse">
+                    <div className="h-8 bg-gray-200 rounded w-48 mb-8"></div>
+                    <div className="grid gap-6">
+                        <div className="bg-white rounded-xl border border-gray-200 p-6 h-64"></div>
+                        <div className="bg-white rounded-xl border border-gray-200 p-6 h-48"></div>
+                        <div className="bg-white rounded-xl border border-gray-200 p-6 h-48"></div>
+                    </div>
+                </main>
             </div>
         );
     }

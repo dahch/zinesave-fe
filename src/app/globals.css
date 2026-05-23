@@ -5,17 +5,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  color-scheme: light;
-  /* Force light mode for standard browser form elements */
+  color-scheme: light dark;
 }
 
-/*The following code is for dark mode, but it is not working. I will fix it later.*/
-/*@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a; /* slate-900 */
+    --foreground: #f8fafc; /* slate-50 */
   }
-}*/
+}
 
 html,
 body {

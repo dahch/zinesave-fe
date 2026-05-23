@@ -1,6 +1,7 @@
 "use client";
 import DashboardHeader from "@/components/DashboardHeader";
 import JobProcessor from "@/components/JobProcessor";
+import { useMe } from "@/hooks/useMe";
 import api from "@/lib/api";
 import { UsageStats } from "@/types/dashboard";
 import { useQuery } from "@tanstack/react-query";
@@ -17,13 +18,7 @@ export default function NewJobPage() {
         },
     });
 
-    const { data: user } = useQuery({
-        queryKey: ["me"],
-        queryFn: async () => {
-            const res = await api.get("/me");
-            return res.data;
-        }
-    });
+    const { data: user } = useMe();
 
     return (
         <div className="min-h-screen bg-brand-light">
