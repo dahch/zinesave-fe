@@ -1,9 +1,10 @@
 "use client";
 import Logo from "@/components/Logo";
+import { Button } from "@/components/ui/Button";
 import api from "@/lib/api";
 import { useAuthStore } from "@/store/auth";
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link"; // This import is needed for the Link components in the JSX
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -16,11 +17,29 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isResending, setIsResending] = useState(false);
+  const [resendSuccess, setResendSuccess] = useState("");
+
+  const handleResendVerification = async () => {
+    if (!email) return;
+    setIsResending(true);
+    setResendSuccess("");
+    setError("");
+    try {
+      const res = await api.post("/auth/resend-verification", { email });
+      setResendSuccess(res.data.message || "Verification email sent");
+    } catch (err: any) {
+      setError(err.response?.data?.detail || "Error resending verification");
+    } finally {
+      setIsResending(false);
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
+    setResendSuccess("");
     try {
       const res = await api.post("/auth/login", { email, password });
       if (res.data.access_token) {
@@ -68,8 +87,24 @@ export default function LoginPage() {
         </h2>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100">
-            {error}
+          <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100 flex flex-col items-start gap-2">
+            <span>{error}</span>
+            {error === t('auth.login.email_not_verified') && (
+              <button
+                type="button"
+                onClick={handleResendVerification}
+                disabled={isResending}
+                className="text-brand-orange font-medium hover:underline disabled:opacity-50"
+              >
+                {isResending ? t('auth.login.resend_sending') : t('auth.login.resend_verification')}
+              </button>
+            )}
+          </div>
+        )}
+
+        {resendSuccess && (
+          <div className="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-lg border border-green-100">
+            {resendSuccess}
           </div>
         )}
 
@@ -107,14 +142,13 @@ export default function LoginPage() {
             </Link>
           </div>
 
-
-          <button
+          <Button
             type="submit"
-            disabled={isLoading}
-            className="w-full bg-brand-orange text-white py-3 rounded-lg font-medium hover:bg-opacity-90 transition disabled:opacity-50"
+            fullWidth
+            isLoading={isLoading}
           >
             {isLoading ? t('auth.login.logging_in') : t('auth.login.submit')}
-          </button>
+          </Button>
         </form>
 
         <div className="my-6 flex items-center">
@@ -125,9 +159,12 @@ export default function LoginPage() {
           <div className="flex-grow border-t border-gray-200"></div>
         </div>
 
-        <button
+        <Button
+          type="button"
+          variant="outline"
+          fullWidth
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-3 border border-gray-300 py-3 rounded-lg hover:bg-gray-50 transition text-gray-700 font-medium bg-white"
+          className="gap-3 font-medium text-gray-700"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path
@@ -148,7 +185,7 @@ export default function LoginPage() {
             />
           </svg>
           {t('auth.google')}
-        </button>
+        </Button>
 
         <p className="mt-6 text-center text-sm text-gray-500">
           {t('auth.login.no_account')}{" "}

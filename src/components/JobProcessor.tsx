@@ -18,6 +18,7 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import { useAuthStore } from "@/store/auth";
 
 interface JobProcessorProps {
   usage?: UsageStats;
@@ -42,8 +43,17 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
       setCurrentJobId(data.id);
     },
     onError: (error: AxiosError) => {
+      const status = error.response?.status;
       const data = error.response?.data as { detail?: string };
-      toast.error(data?.detail || t('job_processor.create_error'));
+      if (status === 409) {
+        toast.error(t('job_processor.error_conflict'));
+      } else if (status === 429) {
+        toast.error(t('job_processor.error_rate_limit'));
+      } else if (status === 400 && data?.detail) {
+        toast.error(data.detail);
+      } else {
+        toast.error(data?.detail || t('job_processor.create_error'));
+      }
     },
   });
 
@@ -83,6 +93,26 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
       toast.error(t('job_processor.upload_error'));
     } finally {
       setUploadingProvider(null);
+    }
+  };
+
+  const handleDownload = async () => {
+    if (!jobId) return;
+    try {
+        const token = useAuthStore.getState().token;
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/jobs/${jobId}/download`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        if (res.ok) {
+            window.open(res.url, '_blank');
+        } else {
+            toast.error(t('job_processor.upload_error')); // Reusing error message or generic one
+        }
+    } catch (error) {
+        console.error(error);
+        toast.error(t('job_processor.upload_error'));
     }
   };
 
@@ -190,15 +220,13 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
                     <LinkIcon className="w-5 h-5" />
                     {t('job_processor.open_article')}
                   </a>
-                  <a
-                    href={`${process.env.NEXT_PUBLIC_API_URL}/jobs/${jobId}/download`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={handleDownload}
                     className="flex items-center justify-center gap-2 w-full bg-brand-orange text-white py-4 rounded-xl font-bold hover:bg-opacity-90 hover:shadow-lg transition transform active:scale-[0.98]"
                   >
                     <Download className="w-5 h-5" />
                     {t('job_processor.download_article')}
-                  </a>
+                  </button>
 
                   {/* Cloud Upload Options - Custom UI for New Job Page */}
                   {connectedProviders.length > 0 && jobStatusQuery.data && (

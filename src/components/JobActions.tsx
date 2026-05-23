@@ -11,6 +11,7 @@ import {
     Loader2
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useAuthStore } from "@/store/auth";
 import { toast } from "sonner";
 
 interface JobActionsProps {
@@ -49,6 +50,25 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
         }
     };
 
+    const handleDownload = async () => {
+        try {
+            const token = useAuthStore.getState().token;
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/jobs/${job.id}/download`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (res.ok) {
+                window.open(res.url, '_blank');
+            } else {
+                toast.error("Error al descargar el archivo");
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Error al descargar el archivo");
+        }
+    };
+
     const providerName = (key: string) => {
         switch (key) {
             case 'google_drive': return 'Google Drive';
@@ -78,16 +98,14 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
             >
                 <LinkIcon className="w-5 h-5" />
             </a>
-            {/* Source Link */}
-            <a
-                href={`${process.env.NEXT_PUBLIC_API_URL}/jobs/${job.id}/download`}
-                target="_blank"
-                rel="noopener noreferrer"
+            {/* Download Button */}
+            <button
+                onClick={handleDownload}
                 className="text-gray-400 hover:text-brand-navy transition p-1"
                 title="Descargar"
             >
                 <Download className="w-5 h-5" />
-            </a>
+            </button>
 
             {/* Cloud Menu Trigger */}
             {connectedProviders.length > 0 && (

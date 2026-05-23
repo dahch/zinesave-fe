@@ -1,15 +1,15 @@
 "use client";
 import DashboardHeader from "@/components/DashboardHeader";
 import JobActions from "@/components/JobActions";
+import { useMe } from "@/hooks/useMe";
 import api from "@/lib/api";
-import { Job, User } from "@/types/dashboard";
+import { Job } from "@/types/dashboard";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,
   ArrowLeft,
   Clock,
-  FileText,
-  Loader2
+  FileText
 } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -25,12 +25,12 @@ export default function HistoryPage() {
   } = useQuery<Job[]>({
     queryKey: ["jobs-history"],
     queryFn: async () => {
-      const res = await api.get("/jobs");
-      return res.data;
+      const res = await api.get("/jobs?per_page=100");
+      return res.data.jobs;
     },
   });
 
-  const { data: user } = useQuery<User>({ queryKey: ["me"], queryFn: async () => (await api.get("/me")).data });
+  const { data: user } = useMe();
 
   return (
     <div className="min-h-screen bg-brand-light">
@@ -54,8 +54,13 @@ export default function HistoryPage() {
         </div>
 
         {isLoading && (
-          <div className="flex justify-center py-20">
-            <Loader2 className="w-10 h-10 text-brand-orange animate-spin" />
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+            <div className="animate-pulse space-y-4">
+              <div className="h-8 bg-gray-200 rounded w-full"></div>
+              <div className="h-16 bg-gray-100 rounded w-full"></div>
+              <div className="h-16 bg-gray-100 rounded w-full"></div>
+              <div className="h-16 bg-gray-100 rounded w-full"></div>
+            </div>
           </div>
         )}
 

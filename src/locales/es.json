@@ -125,6 +125,8 @@
     },
     "job_processor": {
         "create_error": "Error creando el job",
+        "error_conflict": "Este artículo ya está siendo convertido.",
+        "error_rate_limit": "Por favor espera antes de intentar de nuevo.",
         "upload_success": "Subido correctamente",
         "upload_error": "Error al subir archivo",
         "url_label": "URL del Artículo",
@@ -151,6 +153,8 @@
             "unexpected_response": "Respuesta inesperada del servidor",
             "invalid_credentials": "Credenciales incorrectas o error de conexión",
             "email_not_verified": "Email no verificado. Revisa tu bandeja de entrada.",
+            "resend_verification": "Reenviar Verificación",
+            "resend_sending": "Enviando...",
             "logging_in": "Entrando...",
             "submit": "Ingresar",
             "forgot_password": "¿Olvidaste tu contraseña?",

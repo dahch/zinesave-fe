@@ -125,6 +125,8 @@
     },
     "job_processor": {
         "create_error": "Error creating job",
+        "error_conflict": "This article is already being converted.",
+        "error_rate_limit": "Please wait before trying again.",
         "upload_success": "Uploaded successfully",
         "upload_error": "Error uploading file",
         "url_label": "Article URL",
@@ -151,6 +153,8 @@
             "unexpected_response": "Unexpected server response",
             "invalid_credentials": "Invalid credentials or connection error",
             "email_not_verified": "Email not verified. Check your inbox.",
+            "resend_verification": "Resend Verification",
+            "resend_sending": "Sending...",
             "logging_in": "Logging in...",
             "submit": "Login",
             "forgot_password": "Forgot your password?",
