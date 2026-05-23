@@ -149,7 +149,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
           </div>
           <button
             onClick={() => createJobMutation.mutate(urlInput)}
-            disabled={!urlInput || (usage?.credits === 0 && !createJobMutation.isPending)}
+            disabled={!urlInput || createJobMutation.isPending}
             className="bg-brand-orange text-white px-8 py-4 rounded-xl font-bold hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition shadow-lg shadow-blue-900/10 flex items-center gap-2"
           >
             {createJobMutation.isPending ? (
@@ -160,9 +160,17 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
           </button>
         </div>
         {usage && usage.credits === 0 && (
-          <div className="mt-3 text-red-500 text-sm font-medium flex items-center gap-2">
-            <AlertCircle className="w-4 h-4" />
-            {t('job_processor.limit_reached')}
+          <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between text-red-600 text-sm font-medium bg-red-50 p-4 rounded-xl border border-red-100 gap-3">
+            <div className="flex items-center gap-2">
+              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              {t('job_processor.limit_reached')}
+            </div>
+            <button
+              onClick={() => setIsPaywallOpen(true)}
+              className="px-4 py-2 bg-brand-orange text-white rounded-lg text-sm font-bold hover:bg-opacity-90 transition whitespace-nowrap shadow-sm"
+            >
+              {t('job_processor.paywall_button')}
+            </button>
           </div>
         )}
       </div>

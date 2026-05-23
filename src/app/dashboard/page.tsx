@@ -14,10 +14,13 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import PaywallModal from "@/components/PaywallModal";
 
 export default function DashboardPage() {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
+  const [isPaywallOpen, setIsPaywallOpen] = useState(false);
 
   const {
     data: dashboard,
@@ -90,13 +93,23 @@ export default function DashboardPage() {
               {t('dashboard.home.subtitle')}
             </p>
           </div>
-          <Link
-            href="/dashboard/new"
-            className="bg-brand-orange text-white px-6 py-2.5 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center gap-2 shadow-sm"
-          >
-            <Zap className="w-4 h-4" />
-            {t('dashboard.home.new_job_button')}
-          </Link>
+          <div className="flex items-center gap-3">
+            {usage.credits === 0 && (
+              <button
+                onClick={() => setIsPaywallOpen(true)}
+                className="bg-brand-navy text-white px-6 py-2.5 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center gap-2 shadow-sm"
+              >
+                {t('job_processor.paywall_button')}
+              </button>
+            )}
+            <Link
+              href="/dashboard/new"
+              className="bg-brand-orange text-white px-6 py-2.5 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center gap-2 shadow-sm"
+            >
+              <Zap className="w-4 h-4" />
+              {t('dashboard.home.new_job_button')}
+            </Link>
+          </div>
         </div>
 
         {/* Stats Grid */}
@@ -193,6 +206,7 @@ export default function DashboardPage() {
           )}
         </div>
       </main>
+      <PaywallModal isOpen={isPaywallOpen} onClose={() => setIsPaywallOpen(false)} />
     </div>
   );
 }

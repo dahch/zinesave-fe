@@ -19,11 +19,14 @@ import {
 } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import { useState } from "react";
+import PaywallModal from "@/components/PaywallModal";
 
 export default function AccountPage() {
     console.log(process.env.NEXT_PUBLIC_ONEDRIVE_ENABLED);
     const { t } = useTranslation();
     const { data: user, isLoading: isLoadingUser } = useMe();
+    const [isPaywallOpen, setIsPaywallOpen] = useState(false);
 
     const { data: usage, isLoading: isLoadingUsage } = useQuery<UsageStats>({
         queryKey: ["me-usage"],
@@ -161,13 +164,23 @@ export default function AccountPage() {
                                         {usage.credits}
                                     </span>
                                 </div>
-                                <p className="text-sm text-gray-500 mt-2">
-                                    <Trans
-                                        i18nKey="dashboard.account.plan.remaining_message"
-                                        values={{ remaining: usage.credits }}
-                                        components={{ 1: <strong className="text-brand-navy" /> }}
-                                    />
-                                </p>
+                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-2">
+                                    <p className="text-sm text-gray-500">
+                                        <Trans
+                                            i18nKey="dashboard.account.plan.remaining_message"
+                                            values={{ remaining: usage.credits }}
+                                            components={{ 1: <strong className="text-brand-navy" /> }}
+                                        />
+                                    </p>
+                                    {usage.credits === 0 && (
+                                        <button
+                                            onClick={() => setIsPaywallOpen(true)}
+                                            className="px-4 py-2 bg-brand-orange text-white rounded-lg text-sm font-bold hover:bg-opacity-90 transition whitespace-nowrap shadow-sm"
+                                        >
+                                            {t('job_processor.paywall_button')}
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -225,6 +238,7 @@ export default function AccountPage() {
                     </section>
                 </div>
             </main>
+            <PaywallModal isOpen={isPaywallOpen} onClose={() => setIsPaywallOpen(false)} />
         </div>
     );
 }
