@@ -28,6 +28,26 @@
             "secure_title": "Secure",
             "secure_desc": "Your readings are private."
         },
+        "how_it_works": {
+            "title": "How it works",
+            "step1": {
+                "title": "1. Copy the URL",
+                "desc": "Find any article, tutorial, or guide you want to read."
+            },
+            "step2": {
+                "title": "2. Convert",
+                "desc": "Paste the link in our dashboard and let us do the magic."
+            },
+            "step3": {
+                "title": "3. Read on your Kindle",
+                "desc": "Download the optimized ePub or send it directly to your device."
+            }
+        },
+        "cta_bottom": {
+            "title": "Ready to read distraction-free?",
+            "subtitle": "Join our beta program today and start converting.",
+            "button": "Get Started Now"
+        },
         "footer_rights": "© {{year}} ZineSave All rights reserved."
     },
     "dashboard": {

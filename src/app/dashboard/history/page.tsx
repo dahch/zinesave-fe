@@ -92,55 +92,57 @@ export default function HistoryPage() {
         )}
 
         {jobs && jobs.length > 0 && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-            <table className="w-full text-left border-collapse">
-              <thead className="bg-gray-50 text-gray-500 text-xs uppercase font-semibold">
-                <tr>
-                  <th className="px-4 md:px-6 py-4">{t('dashboard.history.table.article_url')}</th>
-                  <th className="px-4 md:px-6 py-4">{t('dashboard.history.table.status')}</th>
-                  <th className="hidden md:table-cell px-6 py-4 text-right">{t('dashboard.history.table.created_at')}</th>
-                  <th className="px-4 md:px-6 py-4 text-right">{t('dashboard.history.table.actions')}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {jobs.map((job) => (
-                  <tr key={job.id} className="hover:bg-gray-50 transition">
-                    <td className="px-4 md:px-6 py-4">
-                      <div className="flex flex-col">
-                        <span className="font-medium text-brand-navy truncate max-w-[140px] sm:max-w-xs md:max-w-md block">
-                          {job.source_url}
-                        </span>
-                        <span className="text-xs text-gray-400 font-mono mt-1 hidden sm:block">
-                          ID: {job.id.substring(0, 8)}...
-                        </span>
-                      </div>
-                    </td>
-                    <td className="px-4 md:px-6 py-4">
-                      <BadgeStatus status={job.status} />
-                    </td>
-                    <td className="hidden md:table-cell px-6 py-4 text-right text-sm text-gray-500">
-                      {job.created_at ? (
-                        new Date(job.created_at).toLocaleDateString()
-                      ) : (
-                        <span className="flex items-center gap-2 justify-end">
-                          <Clock className="w-4 h-4 text-gray-300 animate-pulse" />
-                          {t('dashboard.history.table.unknown_date')}
-                        </span>
-                      )}
-                    </td>
-                    <td className="px-4 md:px-6 py-4 text-right">
-                      <JobActions
-                        job={job}
-                        connectedProviders={user?.connected_providers || []}
-                        onJobUpdate={() => {
-                          queryClient.invalidateQueries({ queryKey: ["jobs-history"] });
-                        }}
-                      />
-                    </td>
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto w-full">
+              <table className="w-full text-left border-collapse whitespace-nowrap md:whitespace-normal">
+                <thead className="bg-gray-50 text-gray-500 text-xs uppercase font-semibold">
+                  <tr>
+                    <th className="px-4 md:px-6 py-4">{t('dashboard.history.table.article_url')}</th>
+                    <th className="px-4 md:px-6 py-4">{t('dashboard.history.table.status')}</th>
+                    <th className="hidden md:table-cell px-6 py-4 text-right">{t('dashboard.history.table.created_at')}</th>
+                    <th className="px-4 md:px-6 py-4 text-right">{t('dashboard.history.table.actions')}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {jobs.map((job) => (
+                    <tr key={job.id} className="hover:bg-gray-50 transition">
+                      <td className="px-4 md:px-6 py-4">
+                        <div className="flex flex-col">
+                          <span className="font-medium text-brand-navy truncate max-w-[180px] sm:max-w-xs md:max-w-md block">
+                            {job.source_url}
+                          </span>
+                          <span className="text-xs text-gray-400 font-mono mt-1 hidden sm:block">
+                            ID: {job.id.substring(0, 8)}...
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-4 md:px-6 py-4">
+                        <BadgeStatus status={job.status} />
+                      </td>
+                      <td className="hidden md:table-cell px-6 py-4 text-right text-sm text-gray-500">
+                        {job.created_at ? (
+                          new Date(job.created_at).toLocaleDateString()
+                        ) : (
+                          <span className="flex items-center gap-2 justify-end">
+                            <Clock className="w-4 h-4 text-gray-300 animate-pulse" />
+                            {t('dashboard.history.table.unknown_date')}
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 md:px-6 py-4 text-right">
+                        <JobActions
+                          job={job}
+                          connectedProviders={user?.connected_providers || []}
+                          onJobUpdate={() => {
+                            queryClient.invalidateQueries({ queryKey: ["jobs-history"] });
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </div>
