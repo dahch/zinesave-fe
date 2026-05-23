@@ -9,8 +9,8 @@ import {
   BarChart3,
   CheckCircle,
   FileText,
-  Loader2,
-  Zap
+  Zap,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -113,7 +113,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-5xl">
           <StatCard
             label={t('dashboard.home.plan_card.title')}
             value={usage.plan.toUpperCase()}
@@ -126,6 +126,13 @@ export default function DashboardPage() {
             icon={<CheckCircle className="w-5 h-5 text-green-500" />}
             subtitle={t('dashboard.home.remaining_card.subtitle')}
             highlight={usage.credits === 0}
+          />
+          <StatCard
+            label={t('dashboard.home.beta_card.title')}
+            value={usage.is_beta_tester ? t('dashboard.home.beta_card.active') : t('dashboard.home.beta_card.inactive')}
+            icon={<Sparkles className={`w-5 h-5 ${usage.is_beta_tester ? 'text-yellow-500' : 'text-gray-400'}`} />}
+            subtitle={t('dashboard.home.beta_card.subtitle')}
+            highlight={usage.is_beta_tester}
           />
         </div>
 

@@ -5,6 +5,7 @@
         "logout": "Salir",
         "account": "Cuenta",
         "home": "Inicio",
+        "back": "Atrás",
         "privacy_policy": "Política de Privacidad",
         "terms_of_service": "Términos del Servicio",
         "status": {
@@ -50,6 +51,12 @@
                 "title": "Créditos",
                 "subtitle": "Disponibles",
                 "unlimited": "ilimitado"
+            },
+            "beta_card": {
+                "title": "Programa Beta",
+                "active": "Activo",
+                "inactive": "Inactivo",
+                "subtitle": "Estado de acceso anticipado"
             },
             "recent_jobs": {
                 "title": "Recientes",

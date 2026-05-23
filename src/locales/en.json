@@ -5,6 +5,7 @@
         "logout": "Log Out",
         "account": "Account",
         "home": "Home",
+        "back": "Back",
         "privacy_policy": "Privacy Policy",
         "terms_of_service": "Terms of Service",
         "status": {
@@ -50,6 +51,12 @@
                 "title": "Credits",
                 "subtitle": "Available",
                 "unlimited": "unlimited"
+            },
+            "beta_card": {
+                "title": "Beta Program",
+                "active": "Active",
+                "inactive": "Inactive",
+                "subtitle": "Early access status"
             },
             "recent_jobs": {
                 "title": "Recent",
