@@ -1,9 +1,9 @@
 "use client";
 
-import Logo from "@/components/Logo";
-import PasswordRequirements from "@/components/PasswordRequirements";
-import api from "@/lib/api";
-import { validatePassword } from "@/lib/validation";
+import Logo from "@/shared/ui/Logo";
+import PasswordRequirements from "@/features/auth/ui/PasswordRequirements";
+import api from "@/shared/api/api";
+import { validatePassword } from "@/shared/lib/validation";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";

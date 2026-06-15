@@ -1,6 +1,6 @@
 "use client";
-import GuestGuard from "@/components/auth/GuestGuard";
-import Header from "@/components/landing/Header";
+import GuestGuard from "@/features/auth/ui/GuestGuard";
+import Header from "@/widgets/landing/ui/Header";
 import { 
   ShieldCheck, 
   Zap, 

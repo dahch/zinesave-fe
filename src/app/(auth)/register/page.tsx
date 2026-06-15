@@ -1,10 +1,10 @@
 "use client";
-import CountrySelector from "@/components/CountrySelector";
-import Logo from "@/components/Logo";
-import PasswordRequirements from "@/components/PasswordRequirements";
-import api from "@/lib/api";
-import { validatePassword } from "@/lib/validation";
-import { useAuthStore } from "@/store/auth";
+import CountrySelector from "@/shared/ui/CountrySelector";
+import Logo from "@/shared/ui/Logo";
+import PasswordRequirements from "@/features/auth/ui/PasswordRequirements";
+import api from "@/shared/api/api";
+import { validatePassword } from "@/shared/lib/validation";
+import { useAuthStore } from "@/entities/auth/model/store";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

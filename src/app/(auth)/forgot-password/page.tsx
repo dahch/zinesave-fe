@@ -1,7 +1,7 @@
 "use client";
 
-import Logo from "@/components/Logo";
-import api from "@/lib/api";
+import Logo from "@/shared/ui/Logo";
+import api from "@/shared/api/api";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";

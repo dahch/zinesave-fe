@@ -1,5 +1,5 @@
 "use client";
-import AuthGuard from "@/components/auth/AuthGuard";
+import AuthGuard from "@/features/auth/ui/AuthGuard";
 
 export default function DashboardLayout({
     children,

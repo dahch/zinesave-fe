@@ -1,5 +1,5 @@
 "use client";
-import GuestGuard from "@/components/auth/GuestGuard";
+import GuestGuard from "@/features/auth/ui/GuestGuard";
 
 export default function AuthLayout({
     children,

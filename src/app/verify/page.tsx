@@ -1,8 +1,8 @@
 "use client";
 
-import Logo from "@/components/Logo";
-import api from "@/lib/api";
-import { useAuthStore } from "@/store/auth";
+import Logo from "@/shared/ui/Logo";
+import api from "@/shared/api/api";
+import { useAuthStore } from "@/entities/auth/model/store";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";

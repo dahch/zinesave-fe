@@ -1,6 +1,6 @@
 "use client";
-import api from "@/lib/api";
-import { useAuthStore } from "@/store/auth";
+import api from "@/shared/api/api";
+import { useAuthStore } from "@/entities/auth/model/store";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 

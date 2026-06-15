@@ -1,9 +1,9 @@
 "use client";
-import DashboardHeader from "@/components/DashboardHeader";
-import { useMe } from "@/hooks/useMe";
-import api from "@/lib/api";
-import { UsageStats } from "@/types/dashboard";
+import DashboardHeader from "@/widgets/dashboard/ui/DashboardHeader";
+import { useMe } from "@/shared/hooks/useMe";
 import { useQuery } from "@tanstack/react-query";
+import { useUsageStats } from "@/features/account-management/model/useUsageStats";
+import { useIntegrations } from "@/features/account-management/model/useIntegrations";
 import {
     Building2,
     Calendar,
@@ -20,7 +20,7 @@ import {
 import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { useState } from "react";
-import PaywallModal from "@/components/PaywallModal";
+import PaywallModal from "@/features/job-processing/ui/PaywallModal";
 
 export default function AccountPage() {
     console.log(process.env.NEXT_PUBLIC_ONEDRIVE_ENABLED);
@@ -28,13 +28,8 @@ export default function AccountPage() {
     const { data: user, isLoading: isLoadingUser } = useMe();
     const [isPaywallOpen, setIsPaywallOpen] = useState(false);
 
-    const { data: usage, isLoading: isLoadingUsage } = useQuery<UsageStats>({
-        queryKey: ["me-usage"],
-        queryFn: async () => {
-            const res = await api.get("/me/usage");
-            return res.data;
-        },
-    });
+    const { data: usage, isLoading: isLoadingUsage } = useUsageStats();
+    const { connectGoogleDrive, connectDropbox, connectOneDrive } = useIntegrations();
 
     const isLoading = isLoadingUser || isLoadingUsage;
 
@@ -197,41 +192,20 @@ export default function AccountPage() {
                                 name="Google Drive"
                                 providerKey="google_drive"
                                 isConnected={user.connected_providers?.includes('google_drive')}
-                                onConnect={async () => {
-                                    try {
-                                        const { data } = await api.get('/auth/google/authorize');
-                                        if (data.auth_url) window.location.href = data.auth_url;
-                                    } catch (e) {
-                                        toast.error(t('dashboard.account.integrations.error_google'));
-                                    }
-                                }}
+                                onConnect={connectGoogleDrive}
                             />
                             <IntegrationCard
                                 name="Dropbox"
                                 providerKey="dropbox"
                                 isConnected={user.connected_providers?.includes('dropbox')}
-                                onConnect={async () => {
-                                    try {
-                                        const { data } = await api.get('/auth/dropbox/authorize');
-                                        if (data.auth_url) window.location.href = data.auth_url;
-                                    } catch (e) {
-                                        toast.error(t('dashboard.account.integrations.error_dropbox'));
-                                    }
-                                }}
+                                onConnect={connectDropbox}
                             />
                             {process.env.NEXT_PUBLIC_ONEDRIVE_ENABLED === 'true' && (
                                 <IntegrationCard
                                     name="OneDrive"
                                     providerKey="onedrive"
                                     isConnected={user.connected_providers?.includes('onedrive')}
-                                    onConnect={async () => {
-                                        try {
-                                            const { data } = await api.get('/auth/onedrive/authorize');
-                                            if (data.auth_url) window.location.href = data.auth_url;
-                                        } catch (e) {
-                                            toast.error(t('dashboard.account.integrations.error_onedrive'));
-                                        }
-                                    }}
+                                    onConnect={connectOneDrive}
                                 />
                             )}
                         </div>

@@ -1,4 +1,4 @@
-import Providers from "@/components/Providers";
+import Providers from "@/shared/providers/Providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

@@ -1,8 +1,8 @@
 "use client";
-import Logo from "@/components/Logo";
-import { Button } from "@/components/ui/Button";
-import api from "@/lib/api";
-import { useAuthStore } from "@/store/auth";
+import Logo from "@/shared/ui/Logo";
+import { Button } from "@/shared/ui/Button";
+import api from "@/shared/api/api";
+import { useAuthStore } from "@/entities/auth/model/store";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

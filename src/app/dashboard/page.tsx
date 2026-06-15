@@ -1,8 +1,8 @@
 "use client";
-import DashboardHeader from "@/components/DashboardHeader";
-import JobActions from "@/components/JobActions";
-import api from "@/lib/api";
-import { DashboardData } from "@/types/dashboard";
+import DashboardHeader from "@/widgets/dashboard/ui/DashboardHeader";
+import JobActions from "@/widgets/job-processor/ui/JobActions";
+import api from "@/shared/api/api";
+import { DashboardData } from "@/shared/types/dashboard";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,
@@ -15,7 +15,8 @@ import {
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import PaywallModal from "@/components/PaywallModal";
+import PaywallModal from "@/features/job-processing/ui/PaywallModal";
+import { useDashboardStats } from "@/features/dashboard/model/useDashboardStats";
 
 export default function DashboardPage() {
   const { t } = useTranslation();
@@ -26,13 +27,7 @@ export default function DashboardPage() {
     data: dashboard,
     isLoading,
     isError,
-  } = useQuery<DashboardData>({
-    queryKey: ["dashboard-home"],
-    queryFn: async () => {
-      const res = await api.get("/me/dashboard");
-      return res.data;
-    },
-  });
+  } = useDashboardStats();
 
   if (isLoading) {
     return (

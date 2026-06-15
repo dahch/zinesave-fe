@@ -1,9 +1,9 @@
 "use client";
-import DashboardHeader from "@/components/DashboardHeader";
-import JobActions from "@/components/JobActions";
-import { useMe } from "@/hooks/useMe";
-import api from "@/lib/api";
-import { Job } from "@/types/dashboard";
+import DashboardHeader from "@/widgets/dashboard/ui/DashboardHeader";
+import JobActions from "@/widgets/job-processor/ui/JobActions";
+import { useMe } from "@/shared/hooks/useMe";
+import api from "@/shared/api/api";
+import { Job } from "@/shared/types/dashboard";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,

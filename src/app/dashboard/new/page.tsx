@@ -1,9 +1,9 @@
 "use client";
-import DashboardHeader from "@/components/DashboardHeader";
-import JobProcessor from "@/components/JobProcessor";
-import { useMe } from "@/hooks/useMe";
-import api from "@/lib/api";
-import { UsageStats } from "@/types/dashboard";
+import DashboardHeader from "@/widgets/dashboard/ui/DashboardHeader";
+import JobProcessor from "@/widgets/job-processor/ui/JobProcessor";
+import { useMe } from "@/shared/hooks/useMe";
+import api from "@/shared/api/api";
+import { UsageStats } from "@/shared/types/dashboard";
 import { useQuery } from "@tanstack/react-query";
 import { AlertCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";

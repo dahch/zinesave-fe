@@ -1,5 +1,5 @@
 "use client";
-import Logo from "@/components/Logo";
+import Logo from "@/shared/ui/Logo";
 import Link from "next/link";
 import { Trans, useTranslation } from "react-i18next";
 

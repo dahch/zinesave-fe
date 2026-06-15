@@ -1,7 +1,7 @@
 "use client";
-import CountrySelector from "@/components/CountrySelector";
-import Logo from "@/components/Logo";
-import api from "@/lib/api";
+import CountrySelector from "@/shared/ui/CountrySelector";
+import Logo from "@/shared/ui/Logo";
+import api from "@/shared/api/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
