@@ -13,9 +13,12 @@ ZineSave App es una aplicación web moderna construida con [Next.js](https://nex
 *   **Framework**: Next.js 16 (App Router)
 *   **Biblioteca UI**: React 19
 *   **Estilos**: Tailwind CSS 3
+*   **Arquitectura**: Feature-Sliced Design (FSD)
 *   **Gestión de Estado**: Zustand
 *   **Data Fetching**: TanStack Query
 *   **Cliente HTTP**: Axios
+*   **Validación**: Zod
+*   **Testing**: Vitest & React Testing Library
 *   **Iconos**: Lucide React
 *   **Notificaciones**: Sonner
 
@@ -84,11 +87,20 @@ Para ejecutar el linter y verificar la calidad del código:
 pnpm lint
 ```
 
-## Estructura del Proyecto
+### Testing
+Para ejecutar la suite de pruebas unitarias (TDD):
 
-*   `src/app`: Páginas y layouts (Next.js App Router).
-*   `src/components`: Componentes reutilizables de la interfaz.
-*   `src/lib`: Utilidades, configuraciones (ej. cliente Axios).
-*   `src/store`: Stores globales de Zustand (ej. autenticación).
-*   `src/types`: Definiciones de tipos TypeScript.
+```bash
+pnpm test
+```
+
+## Estructura del Proyecto (Feature-Sliced Design)
+
+El proyecto sigue estrictamente la arquitectura **Feature-Sliced Design (FSD)**:
+
+*   `src/app`: Capa de enrutamiento estricto (Next.js App Router).
+*   `src/widgets`: Bloques UI complejos que componen vistas usando características y entidades (ej. Header, Formularios complejos).
+*   `src/features`: Lógica de dominio desacoplada y acciones de usuario (ej. hooks de procesamiento, gestión de estado de pago).
+*   `src/entities`: Modelos de negocio y stores globales (ej. Autenticación).
+*   `src/shared`: Código genérico, componentes UI base, configuración de la API, esquemas Zod, logs estructurados y utilidades.
 *   `public`: Archivos estáticos públicos (imágenes, iconos).
