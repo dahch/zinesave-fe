@@ -59,7 +59,7 @@ export function useJobProcessor() {
     enabled: !!currentJobId,
     refetchInterval: (query) => {
       const status = query.state.data?.status;
-      setJobId(query.state.data?.id);
+      setJobId(query.state.data?.id ?? null);
       if (status === "done" || status === "failed") return false;
       return 1500;
     },
