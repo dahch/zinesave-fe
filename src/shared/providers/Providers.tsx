@@ -7,6 +7,7 @@ import CookieBanner from "@/shared/analytics/CookieBanner";
 import { CookieConsentProvider } from "@/shared/analytics/CookieConsentContext";
 import GoogleAnalyticsWrapper from "@/shared/analytics/GoogleAnalyticsWrapper";
 import I18nProvider from "./I18nProvider";
+import EpubReaderModal from "@/features/epub-reader/ui/EpubReaderModal";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -19,6 +20,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           <CookieBanner />
           <GoogleAnalyticsWrapper />
           <Toaster richColors position="top-center" />
+          <EpubReaderModal />
         </CookieConsentProvider>
       </QueryClientProvider>
     </I18nProvider>

@@ -8,10 +8,12 @@ import {
     Download,
     HardDrive,
     Link as LinkIcon,
-    Loader2
+    Loader2,
+    BookOpen
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useJobActions } from "@/features/job-processing/model/useJobActions";
+import { useReaderStore } from "@/features/epub-reader/model/useReaderStore";
 
 interface JobActionsProps {
     job: JobType;
@@ -28,6 +30,7 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
         uploadToCloud,
         downloadJob
     } = useJobActions(job.id, onJobUpdate);
+    const { openReader } = useReaderStore();
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -54,7 +57,16 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
 
     return (
         <div className="relative flex items-center justify-end gap-2" ref={menuRef}>
-            {/* Download Button (Always visible) */}
+            {/* Read Button */}
+            <button
+                onClick={() => openReader(job.id)}
+                className="text-gray-400 hover:text-brand-navy transition p-1"
+                title="Leer Epub"
+            >
+                <BookOpen className="w-5 h-5" />
+            </button>
+
+            {/* Original Link Button (Always visible) */}
             <a
                 href={job.source_url}
                 target="_blank"
