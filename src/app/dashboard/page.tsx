@@ -170,7 +170,7 @@ export default function DashboardPage() {
                               {job.source_url}
                             </span>
                             <span className="text-xs text-gray-400 font-mono mt-1 truncate max-w-[120px] sm:max-w-[200px]">
-                              {job.base_url}
+                              {job.id}
                             </span>
                           </div>
                         </td>
@@ -258,6 +258,13 @@ function BadgeStatus({ status }: { status: string }) {
     return (
       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 animate-pulse">
         {t('common.status.processing')}
+      </span>
+    );
+  }
+  if (status === "queued") {
+    return (
+      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+        {t('common.status.queued', 'Queued')}
       </span>
     );
   }

@@ -8,17 +8,10 @@ export const UsageStatsSchema = z.object({
 
 export const JobSchema = z.object({
   id: z.string(),
-  base_url: z.string(),
   source_url: z.string(),
-  user_id: z.string(),
-  current_step: z.string().nullable(),
-  error_code: z.string().nullable(),
-  error_message: z.string().nullable(),
-  started_at: z.string().nullable(),
-  status: z.enum(["processing", "done", "failed"]),
+  status: z.enum(["queued", "processing", "done", "failed"]),
   progress: z.number(),
   created_at: z.string(),
-  finished_at: z.string().nullable(),
   external_uploads: z.record(z.string(), z.object({
     id: z.string(),
     url: z.string().nullable(),
@@ -33,16 +26,17 @@ export const DashboardDataSchema = z.object({
 
 export const UserSchema = z.object({
   id: z.string(),
-  name: z.string(),
   email: z.string().email(),
-  created_at: z.string(),
-  updated_at: z.string(),
-  is_company: z.boolean().optional(),
-  country: z.string().nullable().optional(),
-  vat_number: z.string().nullable().optional(),
-  connected_providers: z.array(z.string()).optional(),
+  name: z.string().nullable(),
+  plan: z.string(),
   credits: z.number(),
   is_beta_tester: z.boolean(),
+  is_active: z.boolean(),
+  is_company: z.boolean(),
+  country: z.string().nullable(),
+  vat_number: z.string().nullable(),
+  connected_providers: z.array(z.string()).optional(),
+  created_at: z.string(),
 });
 
 export const ApiErrorSchema = z.object({
