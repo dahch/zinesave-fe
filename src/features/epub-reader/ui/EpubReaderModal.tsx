@@ -7,8 +7,10 @@ import api from "@/shared/api/api";
 import { useReaderStore } from "../model/useReaderStore";
 import { toast } from "sonner";
 import { logger } from "@/shared/lib/logger";
+import { useTranslation } from "react-i18next";
 
 export default function EpubReaderModal() {
+  const { t } = useTranslation();
   const { isOpen, jobId, closeReader } = useReaderStore();
   
   const [epubData, setEpubData] = useState<string | null>(null);
@@ -53,7 +55,7 @@ export default function EpubReaderModal() {
         }
       } catch (error) {
         logger.error("Failed to load epub for reading", error, { jobId });
-        toast.error("Error al cargar el epub para leer");
+        toast.error(t('job_processor.reader_modal.error_loading'));
         if (isMounted) {
            closeReader();
         }
@@ -82,11 +84,11 @@ export default function EpubReaderModal() {
         
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50/50">
-          <h2 className="text-sm font-semibold text-gray-700">Visor de Lectura</h2>
+          <h2 className="text-sm font-semibold text-gray-700">{t('job_processor.reader_modal.title')}</h2>
           <button
             onClick={closeReader}
             className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200 rounded-full transition"
-            title="Cerrar visor"
+            title={t('job_processor.reader_modal.close')}
           >
             <X className="w-5 h-5" />
           </button>
@@ -97,7 +99,7 @@ export default function EpubReaderModal() {
           {loading ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10 text-brand-orange">
               <Loader2 className="w-8 h-8 animate-spin mb-3" />
-              <span className="text-sm font-medium text-gray-500">Cargando libro...</span>
+              <span className="text-sm font-medium text-gray-500">{t('job_processor.reader_modal.loading')}</span>
             </div>
           ) : epubData ? (
             <div className="absolute inset-0">

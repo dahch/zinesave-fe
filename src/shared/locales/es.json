@@ -177,7 +177,22 @@
         "upload_to": "Subir a",
         "try_another_url": "Intentar otra URL",
         "convert_another": "Convertir otro artículo",
-        "error_message": "Algo salió mal procesando esa URL. Verifica que sea un artículo público."
+        "error_message": "Algo salió mal procesando esa URL. Verifica que sea un artículo público.",
+        "open_original_link": "Abrir enlace original",
+        "download": "Descargar",
+        "read_epub": "Leer Epub",
+        "save_to_cloud": "Guardar en la nube",
+        "save_to_ellipsis": "Guardar en...",
+        "upload_action": "Subir",
+        "upload_start": "Iniciada subida a {{provider}}",
+        "upload_error_provider": "Error al subir a {{provider}}",
+        "download_error": "Error al descargar el archivo",
+        "reader_modal": {
+            "title": "Visor de Lectura",
+            "close": "Cerrar visor",
+            "loading": "Cargando libro...",
+            "error_loading": "Error al cargar el epub para leer"
+        }
     },
     "auth": {
         "login": {

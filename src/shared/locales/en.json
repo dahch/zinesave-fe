@@ -177,7 +177,22 @@
         "upload_to": "Upload to",
         "try_another_url": "Try another URL",
         "convert_another": "Convert another article",
-        "error_message": "Something went wrong processing that URL. Check if it's a public article."
+        "error_message": "Something went wrong processing that URL. Check if it's a public article.",
+        "open_original_link": "Open original link",
+        "download": "Download",
+        "read_epub": "Read Epub",
+        "save_to_cloud": "Save to cloud",
+        "save_to_ellipsis": "Save to...",
+        "upload_action": "Upload",
+        "upload_start": "Upload started to {{provider}}",
+        "upload_error_provider": "Error uploading to {{provider}}",
+        "download_error": "Error downloading file",
+        "reader_modal": {
+            "title": "Epub Reader",
+            "close": "Close reader",
+            "loading": "Loading book...",
+            "error_loading": "Error loading epub for reading"
+        }
     },
     "auth": {
         "login": {

@@ -14,6 +14,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useJobActions } from "@/features/job-processing/model/useJobActions";
 import { useReaderStore } from "@/features/epub-reader/model/useReaderStore";
+import { useTranslation } from "react-i18next";
 
 interface JobActionsProps {
     job: JobType;
@@ -22,6 +23,7 @@ interface JobActionsProps {
 }
 
 export default function JobActions({ job, connectedProviders, onJobUpdate }: JobActionsProps) {
+    const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const {
@@ -61,7 +63,7 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
             <button
                 onClick={() => openReader(job.id)}
                 className="text-gray-400 hover:text-brand-navy transition p-1"
-                title="Leer Epub"
+                title={t('job_processor.read_epub')}
             >
                 <BookOpen className="w-5 h-5" />
             </button>
@@ -72,7 +74,7 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-brand-navy transition p-1"
-                title="Abrir enlace original"
+                title={t('job_processor.open_original_link')}
             >
                 <LinkIcon className="w-5 h-5" />
             </a>
@@ -80,7 +82,7 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
             <button
                 onClick={downloadJob}
                 className="text-gray-400 hover:text-brand-navy transition p-1"
-                title="Descargar"
+                title={t('job_processor.download')}
             >
                 <Download className="w-5 h-5" />
             </button>
@@ -92,7 +94,7 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
                         onClick={() => setIsOpen(!isOpen)}
                         className={`p-1 transition rounded-full hover:bg-gray-100 ${isOpen ? 'text-brand-orange bg-brand-orange/10' : 'text-gray-400 hover:text-brand-navy'
                             }`}
-                        title="Guardar en la nube"
+                        title={t('job_processor.save_to_cloud')}
                     >
                         <Cloud className="w-5 h-5" />
                     </button>
@@ -101,7 +103,7 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
                     {isOpen && (
                         <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 z-50 animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
                             <div className="px-3 py-2 bg-gray-50 border-b border-gray-100 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Guardar en...
+                                {t('job_processor.save_to_ellipsis')}
                             </div>
                             <div className="p-1">
                                 {connectedProviders.map((provider) => {
@@ -126,7 +128,7 @@ export default function JobActions({ job, connectedProviders, onJobUpdate }: Job
                                                 <CheckCircle2 className="w-4 h-4 text-green-500" />
                                             ) : (
                                                 <span className="text-xs text-brand-orange font-medium hover:underline">
-                                                    Subir
+                                                    {t('job_processor.upload_action')}
                                                 </span>
                                             )}
                                         </button>
