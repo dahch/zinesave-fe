@@ -18,7 +18,7 @@
     "landing": {
         "hero_title_prefix": "Turn the Web into",
         "hero_vocab_epub": "ePub",
-        "hero_subtitle": "Save articles, guides, and tutorials to read offline on your Kindle or favorite reader. Distraction-free.",
+        "hero_subtitle": "Save individual articles or combine multiple guides and tutorials to read offline on your Kindle or favorite reader. Distraction-free.",
         "cta_start": "Start Now",
         "features": {
             "fast_title": "Fast",
@@ -26,21 +26,27 @@
             "download_title": "Direct Download",
             "download_desc": "Formats compatible with all readers.",
             "secure_title": "Secure",
-            "secure_desc": "Your readings are private."
+            "secure_desc": "Your readings are private.",
+            "combine_title": "Combine Articles",
+            "combine_desc": "Merge up to 10 links into a single, cohesive EPUB file.",
+            "reader_title": "In-App Reader",
+            "reader_desc": "Read your converted articles instantly right from your dashboard.",
+            "cloud_title": "Cloud Sync",
+            "cloud_desc": "Save your EPUBs directly to Google Drive or OneDrive."
         },
         "how_it_works": {
             "title": "How it works",
             "step1": {
-                "title": "1. Copy the URL",
-                "desc": "Find any article, tutorial, or guide you want to read."
+                "title": "1. Copy the URL(s)",
+                "desc": "Find any article you want to read, or collect multiple links to build your own custom book."
             },
             "step2": {
                 "title": "2. Convert",
-                "desc": "Paste the link in our dashboard and let us do the magic."
+                "desc": "Paste your link(s) in our dashboard and let us do the magic."
             },
             "step3": {
-                "title": "3. Read on your Kindle",
-                "desc": "Download the optimized ePub or send it directly to your device."
+                "title": "3. Read Anywhere",
+                "desc": "Download the optimized ePub, read it directly in your browser, or send it to your device."
             }
         },
         "cta_bottom": {
@@ -303,7 +309,7 @@
                 "A": {
                     "title": "A. Information you provide to us",
                     "li1": "<0>Account Information:</0> When you register, we collect your email address and authentication credentials.",
-                    "li2": "<0>User Content:</0> We process the URLs you submit and the content of the articles extracted solely for the purpose of generating the ePub files.",
+                    "li2": "<0>User Content:</0> We process the URLs you submit and the content of the articles extracted solely for the purpose of generating your single or composite ePub files.",
                     "li3": "<0>Support Data:</0> Information you provide when contacting our support team."
                 },
                 "B": {
@@ -441,7 +447,7 @@
                 "sub_2": {
                     "title": "2.2. Intellectual Property",
                     "p1": "<0>ZineSave Ownership:</0> We own all rights, title, and interest in and to the Services, including all software, design, text, and graphics (excluding User Content).",
-                    "p2": "<0>User Content Ownership:</0> You retain full ownership of the URLs and content you submit for conversion (\"User Content\"). You grant us a worldwide, royalty-free license to use, reproduce, and process your User Content solely as necessary to provide the conversion service to you (e.g., to generate the ePub)."
+                    "p2": "<0>User Content Ownership:</0> You retain full ownership of the URLs and content you submit for conversion (\"User Content\"). You grant us a worldwide, royalty-free license to use, reproduce, and process your User Content solely as necessary to provide the conversion service to you (e.g., to generate the ePub or composite ePub)."
                 },
                 "sub_3": {
                     "title": "2.3. Data Retention Policy",
@@ -450,7 +456,7 @@
                 "sub_4": {
                     "title": "2.4. Acceptable Use",
                     "intro": "You agree not to use the Services to:",
-                    "li1": "Convert content that is illegal, harmful, threatening, or strictly prohibited by the copyright owner.",
+                    "li1": "Convert content that is illegal, harmful, threatening, strictly prohibited by the copyright owner, or combine copyrighted works to create unauthorized compilations.",
                     "li2": "Distribute spam or malware.",
                     "li3": "Attempt to reverse engineer or compromise the security of the Services.",
                     "li4": "Bypass any usage limits or rate limits imposed on your account type."

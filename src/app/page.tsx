@@ -7,7 +7,9 @@ import {
   ArrowRight, 
   BookOpen, 
   Link as LinkIcon, 
-  Download 
+  Download,
+  Layers,
+  Cloud
 } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -90,8 +92,8 @@ export default function LandingPage() {
 
           {/* Features Section */}
           <section className="py-24 bg-gray-50 px-4 border-y border-gray-100">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <FeatureCard
                   icon={<Zap className="w-8 h-8 text-yellow-600" />}
                   title={t('landing.features.fast_title')}
@@ -105,10 +107,28 @@ export default function LandingPage() {
                   bgColor="bg-blue-50"
                 />
                 <FeatureCard
+                  icon={<Layers className="w-8 h-8 text-purple-600" />}
+                  title={t('landing.features.combine_title')}
+                  desc={t('landing.features.combine_desc')}
+                  bgColor="bg-purple-50"
+                />
+                <FeatureCard
                   icon={<ShieldCheck className="w-8 h-8 text-green-600" />}
                   title={t('landing.features.secure_title')}
                   desc={t('landing.features.secure_desc')}
                   bgColor="bg-green-50"
+                />
+                <FeatureCard
+                  icon={<BookOpen className="w-8 h-8 text-teal-600" />}
+                  title={t('landing.features.reader_title')}
+                  desc={t('landing.features.reader_desc')}
+                  bgColor="bg-teal-50"
+                />
+                <FeatureCard
+                  icon={<Cloud className="w-8 h-8 text-sky-600" />}
+                  title={t('landing.features.cloud_title')}
+                  desc={t('landing.features.cloud_desc')}
+                  bgColor="bg-sky-50"
                 />
               </div>
             </div>

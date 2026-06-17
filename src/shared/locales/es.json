@@ -18,7 +18,7 @@
     "landing": {
         "hero_title_prefix": "Convierte la Web en",
         "hero_vocab_epub": "ePub",
-        "hero_subtitle": "Guarda artículos, guías y tutoriales para leerlos offline en tu Kindle o lector favorito. Sin distracciones.",
+        "hero_subtitle": "Guarda artículos individuales o combina múltiples guías y tutoriales para leerlos offline en tu Kindle o lector favorito. Sin distracciones.",
         "cta_start": "Empezar Ahora",
         "features": {
             "fast_title": "Rápido",
@@ -26,21 +26,27 @@
             "download_title": "Descarga Directa",
             "download_desc": "Formatos compatibles con todos los readers.",
             "secure_title": "Seguro",
-            "secure_desc": "Tus lecturas son privadas."
+            "secure_desc": "Tus lecturas son privadas.",
+            "combine_title": "Combina Artículos",
+            "combine_desc": "Une hasta 10 enlaces en un único archivo EPUB bien estructurado.",
+            "reader_title": "Lector Integrado",
+            "reader_desc": "Lee tus artículos convertidos al instante, directamente en tu panel.",
+            "cloud_title": "Sincronización en la Nube",
+            "cloud_desc": "Guarda tus EPUBs directamente en Google Drive o OneDrive."
         },
         "how_it_works": {
             "title": "Cómo funciona",
             "step1": {
-                "title": "1. Copia la URL",
-                "desc": "Encuentra cualquier artículo, tutorial o guía que quieras leer."
+                "title": "1. Copia la(s) URL(s)",
+                "desc": "Encuentra cualquier artículo que quieras leer, o recopila múltiples enlaces para armar tu propio libro."
             },
             "step2": {
                 "title": "2. Convierte",
-                "desc": "Pega el enlace en nuestro panel y deja que hagamos la magia."
+                "desc": "Pega tu(s) enlace(s) en nuestro panel y deja que hagamos la magia."
             },
             "step3": {
-                "title": "3. Lee en tu dispositivo",
-                "desc": "Descarga el ePub optimizado o envíalo directamente a tu Kindle o Kobo."
+                "title": "3. Lee donde quieras",
+                "desc": "Descarga el ePub, léelo directamente en tu navegador o envíalo a tu dispositivo."
             }
         },
         "cta_bottom": {
@@ -303,7 +309,7 @@
                 "A": {
                     "title": "A. Información que usted nos proporciona",
                     "li1": "<0>Información de la cuenta:</0> Cuando se registra, recopilamos su dirección de correo electrónico y credenciales de autenticación.",
-                    "li2": "<0>Contenido del usuario:</0> Procesamos las URL que envía y el contenido de los artículos extraídos únicamente con el propósito de generar los archivos ePub.",
+                    "li2": "<0>Contenido del usuario:</0> Procesamos las URL que envía y el contenido de los artículos extraídos únicamente con el propósito de generar sus archivos ePub simples o compuestos.",
                     "li3": "<0>Datos de soporte:</0> Información que proporciona al ponerse en contacto con nuestro equipo de soporte."
                 },
                 "B": {
@@ -441,7 +447,7 @@
                 "sub_2": {
                     "title": "2.2. Propiedad intelectual",
                     "p1": "<0>Propiedad de ZineSave:</0> Poseemos todos los derechos, títulos e intereses sobre los Servicios, incluido todo el software, diseño, texto y gráficos (excluyendo el Contenido del usuario).",
-                    "p2": "<0>Propiedad del contenido del usuario:</0> Usted conserva la plena propiedad de las URL y el contenido que envía para la conversión (\"Contenido del usuario\"). Nos otorga una licencia mundial, libre de regalías para usar, reproducir y procesar su Contenido de usuario únicamente según sea necesario para brindarle el servicio de conversión (por ejemplo, para generar el ePub)."
+                    "p2": "<0>Propiedad del contenido del usuario:</0> Usted conserva la plena propiedad de las URL y el contenido que envía para la conversión (\"Contenido del usuario\"). Nos otorga una licencia mundial, libre de regalías para usar, reproducir y procesar su Contenido de usuario únicamente según sea necesario para brindarle el servicio de conversión (por ejemplo, para generar el ePub simple o compuesto)."
                 },
                 "sub_3": {
                     "title": "2.3. Política de retención de datos",
@@ -450,7 +456,7 @@
                 "sub_4": {
                     "title": "2.4. Uso aceptable",
                     "intro": "Usted acepta no utilizar los Servicios para:",
-                    "li1": "Convertir contenido ilegal, dañino, amenazante o estrictamente prohibido por el propietario de los derechos de autor.",
+                    "li1": "Convertir contenido ilegal, dañino, amenazante, estrictamente prohibido por el propietario de los derechos de autor, o combinar obras protegidas para crear compilaciones no autorizadas.",
                     "li2": "Distribuir spam o malware.",
                     "li3": "Intentar aplicar ingeniería inversa o comprometer la seguridad de los Servicios.",
                     "li4": "Eludir cualquier límite de uso o límite de velocidad impuesto a su tipo de cuenta."
