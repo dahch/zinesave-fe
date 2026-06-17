@@ -15,6 +15,10 @@ export function useJobProcessor() {
   const queryClient = useQueryClient();
   
   const [urlInput, setUrlInput] = useState("");
+  const [jobType, setJobType] = useState<"simple" | "composite">("simple");
+  const [urlsInput, setUrlsInput] = useState<string[]>(["", ""]);
+  const [titleInput, setTitleInput] = useState("");
+  
   const [currentJobId, setCurrentJobId] = useState<string | null>(null);
   const [jobId, setJobId] = useState<string | null>(null);
   const [isPaywallOpen, setIsPaywallOpen] = useState(false);
@@ -50,6 +54,38 @@ export function useJobProcessor() {
     },
   });
 
+  const createCompositeJobMutation = useMutation({
+    mutationFn: async (payload: { urls: string[]; title: string }) => {
+      logger.info("Creating new composite job", { count: payload.urls.length });
+      const res = await api.post("/jobs/composite", payload);
+      return JobSchema.parse(res.data);
+    },
+    onSuccess: (data) => {
+      logger.info("Composite job created successfully", { jobId: data.id });
+      setCurrentJobId(data.id);
+    },
+    onError: (error: AxiosError) => {
+      const status = error.response?.status;
+      const data = ApiErrorSchema.safeParse(error.response?.data);
+      const detail = data.success ? data.data.detail : undefined;
+      logger.error("Composite job creation failed", error, { status, detail });
+
+      if (status === 403 && detail === 'INSUFFICIENT_CREDITS') {
+        setIsPaywallOpen(true);
+      } else if (status === 409) {
+        toast.error(t('job_processor.error_conflict'));
+      } else if (status === 429) {
+        toast.error(t('job_processor.error_rate_limit'));
+      } else if (status === 400 && detail) {
+        toast.error(typeof detail === 'string' ? detail : JSON.stringify(detail));
+      } else if (status === 422 && detail) {
+        toast.error(t('job_processor.urls_required'));
+      } else {
+        toast.error(typeof detail === 'string' ? detail : t('job_processor.create_error'));
+      }
+    },
+  });
+
   const jobStatusQuery = useQuery({
     queryKey: ["job", currentJobId],
     queryFn: async () => {
@@ -69,6 +105,8 @@ export function useJobProcessor() {
     logger.info("Resetting job state");
     setCurrentJobId(null);
     setUrlInput("");
+    setUrlsInput(["", ""]);
+    setTitleInput("");
     if (currentJobId) {
       queryClient.removeQueries({ queryKey: ["job", currentJobId] });
     }
@@ -117,14 +155,21 @@ export function useJobProcessor() {
   const progress = jobStatusQuery.data?.progress || 0;
 
   return {
+    jobType,
+    setJobType,
     urlInput,
     setUrlInput,
+    urlsInput,
+    setUrlsInput,
+    titleInput,
+    setTitleInput,
     currentJobId,
     jobId,
     isPaywallOpen,
     setIsPaywallOpen,
     uploadingProvider,
     createJobMutation,
+    createCompositeJobMutation,
     jobStatusQuery,
     status,
     progress,

@@ -151,6 +151,17 @@
         }
     },
     "job_processor": {
+        "mode_simple": "Enlace Único",
+        "mode_composite": "Múltiples Enlaces",
+        "title_label": "Título del EPUB",
+        "title_placeholder": "Mi libro personalizado",
+        "add_url": "Añadir URL",
+        "remove_url": "Eliminar",
+        "max_urls_free": "Puedes añadir hasta 4 URLs en el plan gratuito.",
+        "max_urls_pro": "Puedes añadir hasta 10 URLs en el plan Pro.",
+        "select_article_open": "Selecciona un artículo para abrir",
+        "title_required": "El título es obligatorio",
+        "urls_required": "Por favor, introduce URLs válidas",
         "create_error": "Error creando el job",
         "error_conflict": "Este artículo ya está siendo convertido.",
         "error_rate_limit": "Por favor espera antes de intentar de nuevo.",

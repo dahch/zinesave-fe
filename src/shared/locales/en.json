@@ -151,6 +151,17 @@
         }
     },
     "job_processor": {
+        "mode_simple": "Single Link",
+        "mode_composite": "Multiple Links",
+        "title_label": "EPUB Title",
+        "title_placeholder": "My custom book",
+        "add_url": "Add URL",
+        "remove_url": "Remove",
+        "max_urls_free": "You can add up to 4 URLs in the free plan.",
+        "max_urls_pro": "You can add up to 10 URLs in the Pro plan.",
+        "select_article_open": "Select an article to open",
+        "title_required": "Title is required",
+        "urls_required": "Please provide valid URLs",
         "create_error": "Error creating job",
         "error_conflict": "This article is already being converted.",
         "error_rate_limit": "Please wait before trying again.",
