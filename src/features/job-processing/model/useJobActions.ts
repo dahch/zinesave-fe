@@ -31,15 +31,24 @@ export function useJobActions(jobId: string, onJobUpdate?: () => void) {
   };
 
   const downloadJob = async () => {
+    const newWindow = window.open('', '_blank');
+
     try {
       logger.info("Initiating job download", { jobId });
       const res = await api.get(`/jobs/${jobId}/download`);
+
       if (res.data?.download_url) {
-        window.open(res.data.download_url, '_blank');
+        if (newWindow) {
+          newWindow.location.href = res.data.download_url;
+        } else {
+          window.location.href = res.data.download_url;
+        }
       } else {
+        if (newWindow) newWindow.close();
         throw new Error("No download URL returned");
       }
     } catch (error) {
+      if (newWindow) newWindow.close();
       logger.error("Failed to download job", error, { jobId });
       toast.error("Error al descargar el archivo");
     }
