@@ -12,12 +12,14 @@ import {
   Plus,
   RefreshCw,
   Trash2,
-  ChevronDown
+  ChevronDown,
+  BookOpen
 } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PaywallModal from "@/features/job-processing/ui/PaywallModal";
 import { useJobProcessor } from "@/features/job-processing/model/useJobProcessor";
+import { useReaderStore } from "@/features/epub-reader/model/useReaderStore";
 
 interface JobProcessorProps {
   usage?: UsageStats;
@@ -51,6 +53,8 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
     handleUpload,
     handleDownload
   } = useJobProcessor();
+
+  const { openReader } = useReaderStore();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -303,6 +307,13 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
                       {t('job_processor.open_article')}
                     </a>
                   )}
+                  <button
+                    onClick={() => currentJobId && openReader(currentJobId)}
+                    className="flex items-center justify-center gap-2 w-full bg-blue-50 text-blue-700 py-4 rounded-xl font-bold hover:bg-blue-100 hover:shadow-lg transition transform active:scale-[0.98]"
+                  >
+                    <BookOpen className="w-5 h-5" />
+                    {t('job_processor.read_epub')}
+                  </button>
                   <button
                     onClick={handleDownload}
                     className="flex items-center justify-center gap-2 w-full bg-brand-orange text-white py-4 rounded-xl font-bold hover:bg-opacity-90 hover:shadow-lg transition transform active:scale-[0.98]"
