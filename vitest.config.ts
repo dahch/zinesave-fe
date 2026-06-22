@@ -15,6 +15,12 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       exclude: ['node_modules/', '.next/', 'vitest.config.ts', 'vitest.setup.ts', 'src/app/**', 'src/pages/**', 'src/shared/ui/**'],
+      thresholds: {
+        lines: 70,
+        functions: 70,
+        branches: 70,
+        statements: 70
+      }
     },
   },
 });
