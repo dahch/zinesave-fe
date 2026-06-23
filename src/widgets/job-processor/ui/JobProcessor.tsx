@@ -6,7 +6,6 @@ import {
   Cloud,
   Download,
   FileCheck,
-  HardDrive,
   Link as LinkIcon,
   Loader2,
   Plus,
@@ -27,7 +26,7 @@ interface JobProcessorProps {
   connectedProviders?: string[];
 }
 
-export default function JobProcessor({ usage, isLoadingUsage = false, connectedProviders = [] }: JobProcessorProps) {
+export default function JobProcessor({ usage, connectedProviders = [] }: JobProcessorProps) {
   const { t } = useTranslation();
   
   const {
@@ -40,7 +39,6 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
     titleInput,
     setTitleInput,
     currentJobId,
-    jobId,
     isPaywallOpen,
     setIsPaywallOpen,
     uploadingProvider,
@@ -330,9 +328,7 @@ export default function JobProcessor({ usage, isLoadingUsage = false, connectedP
                         const isUploaded = job.external_uploads?.[provider];
                         const isUploading = uploadingProvider === provider;
 
-                        const getProviderIcon = (p: string) => {
-                          return <HardDrive className="w-4 h-4" />;
-                        };
+
 
                         const getProviderName = (p: string) => {
                           if (p === 'google_drive') return 'Google Drive';

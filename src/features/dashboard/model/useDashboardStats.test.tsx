@@ -37,7 +37,7 @@ test('should fetch and parse dashboard stats successfully', async () => {
     }
   };
 
-  (api.get as any).mockResolvedValueOnce(mockResponse);
+  vi.mocked(api.get).mockResolvedValueOnce(mockResponse);
 
   const { result } = renderHook(() => useDashboardStats(), { wrapper });
 

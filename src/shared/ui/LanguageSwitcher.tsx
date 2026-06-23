@@ -1,18 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useIsMounted } from "@/shared/hooks/useIsMounted";
 import { useTranslation } from "react-i18next";
 
 export default function LanguageSwitcher() {
     const { i18n } = useTranslation();
-    const [mounted, setMounted] = useState(false);
+    const isMounted = useIsMounted();
 
-    // Avoid hydration mismatch by waiting for mount
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
+    if (!isMounted) {
         return null;
     }
 

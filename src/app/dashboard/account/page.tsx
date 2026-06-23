@@ -1,7 +1,8 @@
 "use client";
 import DashboardHeader from "@/widgets/dashboard/ui/DashboardHeader";
 import { useMe } from "@/shared/hooks/useMe";
-import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
+
 import { useUsageStats } from "@/features/account-management/model/useUsageStats";
 import { useIntegrations } from "@/features/account-management/model/useIntegrations";
 import {
@@ -11,14 +12,13 @@ import {
     Cloud,
     CreditCard,
     Link as LinkIcon,
-    Loader2,
     Mail,
     MapPin,
     Shield,
     User as UserIcon,
 } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
-import { toast } from "sonner";
+
 import { useState } from "react";
 import PaywallModal from "@/features/job-processing/ui/PaywallModal";
 
@@ -96,10 +96,13 @@ export default function AccountPage() {
                                 <p className="text-gray-900 font-medium">
                                     {user.country ? (
                                         <span className="flex items-center gap-2">
-                                            <img
+                                            <Image
                                                 src={`https://flagcdn.com/20x15/${user.country.toLowerCase()}.png`}
                                                 alt={user.country}
+                                                width={20}
+                                                height={15}
                                                 className="rounded-sm shadow-sm"
+                                                unoptimized
                                             />
                                             {user.country}
                                         </span>
@@ -190,20 +193,17 @@ export default function AccountPage() {
                         <div className="grid md:grid-cols-3 gap-6">
                             <IntegrationCard
                                 name="Google Drive"
-                                providerKey="google_drive"
                                 isConnected={user.connected_providers?.includes('google_drive')}
                                 onConnect={connectGoogleDrive}
                             />
                             <IntegrationCard
                                 name="Dropbox"
-                                providerKey="dropbox"
                                 isConnected={user.connected_providers?.includes('dropbox')}
                                 onConnect={connectDropbox}
                             />
                             {process.env.NEXT_PUBLIC_ONEDRIVE_ENABLED === 'true' && (
                                 <IntegrationCard
                                     name="OneDrive"
-                                    providerKey="onedrive"
                                     isConnected={user.connected_providers?.includes('onedrive')}
                                     onConnect={connectOneDrive}
                                 />
@@ -217,7 +217,7 @@ export default function AccountPage() {
     );
 }
 
-function IntegrationCard({ name, providerKey, isConnected, onConnect }: { name: string, providerKey: string, isConnected?: boolean, onConnect: () => void }) {
+function IntegrationCard({ name, isConnected, onConnect }: { name: string, isConnected?: boolean, onConnect: () => void }) {
     const { t } = useTranslation();
     return (
         <div className="flex flex-col items-center p-4 border rounded-lg bg-gray-50/50 hover:bg-gray-50 transition">

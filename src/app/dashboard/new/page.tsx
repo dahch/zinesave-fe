@@ -5,7 +5,6 @@ import { useMe } from "@/shared/hooks/useMe";
 import api from "@/shared/api/api";
 import { UsageStats } from "@/shared/types/dashboard";
 import { useQuery } from "@tanstack/react-query";
-import { AlertCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export default function NewJobPage() {
