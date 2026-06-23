@@ -1,6 +1,5 @@
 "use client";
 
-import api from "@/shared/api/api";
 import { JobType } from "@/shared/types/schemas";
 import {
     CheckCircle2,

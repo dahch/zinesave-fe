@@ -17,12 +17,11 @@ function VerifyContent() {
     // obtaining token from URL
     const token = searchParams.get("token");
 
-    const [status, setStatus] = useState<'verifying' | 'success' | 'error'>('verifying');
+    const [status, setStatus] = useState<'verifying' | 'success' | 'error'>(() => token ? 'verifying' : 'error');
     const verifyCalled = useRef(false);
 
     useEffect(() => {
         if (!token) {
-            setStatus('error');
             return;
         }
 

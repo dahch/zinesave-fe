@@ -16,7 +16,7 @@ beforeEach(() => {
 });
 
 test('uploadToCloud should call API and toast success', async () => {
-  (api.post as any).mockResolvedValueOnce({ data: {} });
+  vi.mocked(api.post).mockResolvedValueOnce({ data: {} });
   const onJobUpdate = vi.fn();
 
   const { result } = renderHook(() => useJobActions('job-1', onJobUpdate));
@@ -26,12 +26,14 @@ test('uploadToCloud should call API and toast success', async () => {
   });
 
   expect(api.post).toHaveBeenCalledWith('/jobs/job-1/upload', { provider: 'google_drive' });
-  expect(toast.success).toHaveBeenCalledWith('Iniciada subida a Google Drive');
+  expect(toast.success).toHaveBeenCalledWith('job_processor.upload_start');
   expect(onJobUpdate).toHaveBeenCalled();
 });
 
 test('downloadJob should call API and open window', async () => {
-  (api.get as any).mockResolvedValueOnce({ data: { download_url: 'http://download.test' } });
+  vi.mocked(api.get).mockResolvedValueOnce({ data: { download_url: 'http://download.test' } });
+  const mockWindow = { location: { href: '' } } as unknown as Window;
+  vi.mocked(window.open).mockReturnValueOnce(mockWindow);
 
   const { result } = renderHook(() => useJobActions('job-1'));
   
@@ -40,5 +42,6 @@ test('downloadJob should call API and open window', async () => {
   });
 
   expect(api.get).toHaveBeenCalledWith('/jobs/job-1/download');
-  expect(window.open).toHaveBeenCalledWith('http://download.test', '_blank');
+  expect(window.open).toHaveBeenCalledWith('', '_blank');
+  expect(mockWindow.location.href).toBe('http://download.test');
 });

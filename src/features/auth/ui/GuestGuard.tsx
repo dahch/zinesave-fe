@@ -2,23 +2,18 @@
 import { useAuthStore } from "@/entities/auth/model/store";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function GuestGuard({ children }: { children: React.ReactNode }) {
     const { isAuthenticated, isHydrated } = useAuthStore();
     const router = useRouter();
-    const [isReady, setIsReady] = useState(false);
+    const isReady = isHydrated && !isAuthenticated();
 
     useEffect(() => {
         console.log("GuestGuard check:", { isHydrated, isAuthenticated: isAuthenticated() });
-        if (isHydrated) {
-            if (isAuthenticated()) {
-                console.log("GuestGuard: Redirecting to dashboard");
-                router.push("/dashboard");
-            } else {
-                console.log("GuestGuard: Ready");
-                setIsReady(true);
-            }
+        if (isHydrated && isAuthenticated()) {
+            console.log("GuestGuard: Redirecting to dashboard");
+            router.push("/dashboard");
         }
     }, [isHydrated, isAuthenticated, router]);
 

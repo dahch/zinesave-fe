@@ -1,12 +1,9 @@
 "use client";
 import DashboardHeader from "@/widgets/dashboard/ui/DashboardHeader";
 import JobActions from "@/widgets/job-processor/ui/JobActions";
-import api from "@/shared/api/api";
-import { DashboardData } from "@/shared/types/dashboard";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,
-  BarChart3,
   CheckCircle,
   FileText,
   Zap,
@@ -224,7 +221,7 @@ function StatCard({
 }: {
   label: string;
   value: string | number;
-  icon: any;
+  icon: React.ReactNode;
   subtitle: string;
   highlight?: boolean;
 }) {
