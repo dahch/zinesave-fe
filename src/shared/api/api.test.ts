@@ -1,4 +1,4 @@
-import { expect, test, vi, beforeEach } from 'vitest';
+import { expect, test, beforeEach } from 'vitest';
 import api from './api';
 import { useAuthStore } from '@/entities/auth/model/store';
 import MockAdapter from 'axios-mock-adapter';

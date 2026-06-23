@@ -28,8 +28,9 @@ export default function LoginPage() {
     try {
       const res = await api.post("/auth/resend-verification", { email });
       setResendSuccess(res.data.message || "Verification email sent");
-    } catch (err: any) {
-      setError(err.response?.data?.detail || "Error resending verification");
+    } catch (err: unknown) {
+      const responseError = err as { response?: { data?: { detail?: string } } };
+      setError(responseError.response?.data?.detail || "Error resending verification");
     } finally {
       setIsResending(false);
     }
@@ -48,8 +49,9 @@ export default function LoginPage() {
       } else {
         setError(t('auth.login.unexpected_response'));
       }
-    } catch (err: any) {
-      if (err.response?.status === 403) {
+    } catch (err: unknown) {
+      const responseError = err as { response?: { status?: number } };
+      if (responseError.response?.status === 403) {
         setError(t('auth.login.email_not_verified'));
       } else {
         setError(t('auth.login.invalid_credentials'));
@@ -63,7 +65,7 @@ export default function LoginPage() {
     try {
       const { data } = await api.get("/auth/google");
       if (data.auth_url) window.location.href = data.auth_url;
-    } catch (error) {
+    } catch {
       setError(t('auth.google_error'));
     }
   };

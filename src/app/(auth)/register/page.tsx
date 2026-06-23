@@ -4,17 +4,13 @@ import Logo from "@/shared/ui/Logo";
 import PasswordRequirements from "@/features/auth/ui/PasswordRequirements";
 import api from "@/shared/api/api";
 import { validatePassword } from "@/shared/lib/validation";
-import { useAuthStore } from "@/entities/auth/model/store";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function RegisterPage() {
-    const router = useRouter();
     const { t } = useTranslation();
-    const setToken = useAuthStore((s) => s.setToken);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -61,8 +57,9 @@ export default function RegisterPage() {
             } else {
                 setError(t('auth.register.unexpected_response'));
             }
-        } catch (err: any) {
-            if (err.response?.status === 409) {
+        } catch (err: unknown) {
+            const responseError = err as { response?: { status?: number } };
+            if (responseError.response?.status === 409) {
                 setError(t('auth.register.email_exists'));
             } else {
                 setError(t('auth.register.general_error'));
@@ -76,7 +73,7 @@ export default function RegisterPage() {
         try {
             const { data } = await api.get("/auth/google");
             if (data.auth_url) window.location.href = data.auth_url;
-        } catch (error) {
+        } catch {
             setError(t('auth.google_error'));
         }
     };

@@ -31,18 +31,12 @@ export default function CountrySelector({ value, onChange, label, placeholder }:
         function handleClickOutside(event: MouseEvent) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setIsOpen(false);
+                setSearchTerm("");
             }
         }
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
-
-    // When dropdown opens, clear search
-    useEffect(() => {
-        if (!isOpen) {
-            setSearchTerm("");
-        }
-    }, [isOpen]);
 
     const getCountryName = (country: typeof COUNTRIES[0] | undefined) => {
         if (!country) return "";
@@ -59,7 +53,12 @@ export default function CountrySelector({ value, onChange, label, placeholder }:
 
             <div
                 className="w-full p-3 border border-gray-200 rounded-lg bg-white flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-brand-orange focus-within:border-transparent transition"
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => {
+                    if (isOpen) {
+                        setSearchTerm("");
+                    }
+                    setIsOpen(!isOpen);
+                }}
             >
                 <span className={`${!selectedCountry ? 'text-gray-500' : 'text-gray-900'}`}>
                     {selectedCountry ? getCountryName(selectedCountry) : (placeholder || t('auth.register.select_country'))}
@@ -91,6 +90,7 @@ export default function CountrySelector({ value, onChange, label, placeholder }:
                                     onClick={() => {
                                         onChange(country.code);
                                         setIsOpen(false);
+                                        setSearchTerm("");
                                     }}
                                 >
                                     {getCountryName(country)}

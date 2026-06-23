@@ -1,14 +1,8 @@
 "use client";
 
-import { clsx, type ClassValue } from "clsx";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { twMerge } from "tailwind-merge";
 import { useCookieConsent } from "./CookieConsentContext";
-
-function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
 
 export default function CookieBanner() {
     const { consent, acceptCookies, rejectCookies } = useCookieConsent();

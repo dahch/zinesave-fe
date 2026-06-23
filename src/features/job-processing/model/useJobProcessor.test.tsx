@@ -53,7 +53,7 @@ test('should create a job and update currentJobId', async () => {
     }
   };
 
-  (api.post as any).mockResolvedValueOnce(mockJobResponse);
+  vi.mocked(api.post).mockResolvedValueOnce(mockJobResponse);
 
   const { result } = renderHook(() => useJobProcessor(), { wrapper });
 

@@ -6,14 +6,13 @@ import api from "@/shared/api/api";
 import { validatePassword } from "@/shared/lib/validation";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function ResetPasswordContent() {
     const { t } = useTranslation();
     const searchParams = useSearchParams();
-    const router = useRouter();
     const token = searchParams.get("token");
 
     const [password, setPassword] = useState("");
@@ -53,11 +52,12 @@ function ResetPasswordContent() {
                 new_password: password
             });
             setStatus('success');
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error);
             setStatus('error');
             // Try to get error message from backend
-            const detail = error.response?.data?.detail;
+            const err = error as { response?: { data?: { detail?: string } } };
+            const detail = err.response?.data?.detail;
             setErrorMessage(detail || t('auth.reset_password.error_token'));
         }
     };

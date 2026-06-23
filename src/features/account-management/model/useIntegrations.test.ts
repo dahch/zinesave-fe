@@ -18,7 +18,7 @@ beforeEach(() => {
 });
 
 test('connectGoogleDrive should redirect on success', async () => {
-  (api.get as any).mockResolvedValueOnce({ data: { auth_url: 'http://auth.test' } });
+  vi.mocked(api.get).mockResolvedValueOnce({ data: { auth_url: 'http://auth.test' } });
 
   const { result } = renderHook(() => useIntegrations());
   
@@ -30,7 +30,7 @@ test('connectGoogleDrive should redirect on success', async () => {
 });
 
 test('connectGoogleDrive should toast on error', async () => {
-  (api.get as any).mockRejectedValueOnce(new Error('API Error'));
+  vi.mocked(api.get).mockRejectedValueOnce(new Error('API Error'));
 
   const { result } = renderHook(() => useIntegrations());
   

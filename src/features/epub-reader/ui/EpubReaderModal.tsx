@@ -74,7 +74,7 @@ export default function EpubReaderModal() {
         URL.revokeObjectURL(objectUrlToRevoke);
       }
     };
-  }, [isOpen, jobId, closeReader]);
+  }, [isOpen, jobId, closeReader, t]);
 
   if (!isOpen) return null;
 

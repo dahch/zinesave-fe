@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import { AxiosError } from "axios";
 import api from "@/shared/api/api";
 import { useAuthStore } from "@/entities/auth/model/store";
-import { Job } from "@/shared/types/dashboard";
 import { logger } from "@/shared/lib/logger";
 
 import { JobSchema, ApiErrorSchema } from "@/shared/types/schemas";
